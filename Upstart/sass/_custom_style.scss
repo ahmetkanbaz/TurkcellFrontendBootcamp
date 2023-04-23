@@ -63,3 +63,28 @@
 .infoParagraph {
   color: #8492a6;
 }
+
+.perfectSection {
+  .card {
+    transition: all .5s ease-in-out;
+    .cardIcon {
+      background: rgba(255,87,20,0.1);
+      height: 85px;
+      width: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    a {
+      color: $dark;
+      text-decoration: none;
+      transition: all .5s ease;
+      &:hover {
+        color: $primary;
+      }
+    }
+    &:hover {
+      box-shadow: 0 25px 25px rgba(36,39,44,0.05);
+    }
+  }
+}
