@@ -1,6 +1,40 @@
+.btn {
+  outline: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+  border: none;
+  &:hover {
+    background-color: #cb3f07;
+  }
+}
+
+.nav-link {
+  text-transform: uppercase;
+}
+
 .socials {
-  div {
+  a {
     width: 35px;
     height: 35px;
+    background-color: $primary;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #cb3f07;
+    }
+  }
+}
+
+.topSection {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ),url("https://shreethemes.in/upstart/layouts/images/bg/1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  p {
+    max-width: 600px;
   }
 }
