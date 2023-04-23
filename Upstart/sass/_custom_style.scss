@@ -1,9 +1,10 @@
 .btn {
   outline: none;
   letter-spacing: 0.5px;
-  transition: all 0.3s ease-in-out;
+  transition: all .3s ease-in-out;
   border-radius: 6px;
   border: none;
+  text-decoration: none;
   &:hover {
     background-color: #cb3f07;
   }
@@ -37,4 +38,28 @@
   p {
     max-width: 600px;
   }
+}
+
+.playButton {
+  position: absolute;
+  bottom: 42%;
+  left: 42%;
+  a {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.infoParagraph {
+  color: #8492a6;
 }
