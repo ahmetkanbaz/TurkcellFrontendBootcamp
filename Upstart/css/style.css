@@ -5292,7 +5292,7 @@ textarea.form-control-lg {
   --bs-modal-border-color: var(--bs-border-color-translucent);
   --bs-modal-border-width: 1px;
   --bs-modal-border-radius: 0.5rem;
-  --bs-modal-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --bs-modal-box-shadow: 0 25px 25px rgba(36, 39, 44, 0.05);
   --bs-modal-inner-border-radius: calc(0.5rem - 1px);
   --bs-modal-header-padding-x: 1rem;
   --bs-modal-header-padding-y: 1rem;
@@ -6109,7 +6109,7 @@ textarea.form-control-lg {
   --bs-offcanvas-bg: #fff;
   --bs-offcanvas-border-width: 1px;
   --bs-offcanvas-border-color: var(--bs-border-color-translucent);
-  --bs-offcanvas-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --bs-offcanvas-box-shadow: 0 25px 25px rgba(36, 39, 44, 0.05);
 }
 
 @media (max-width: 575.98px) {
@@ -7036,7 +7036,7 @@ textarea.form-control-lg {
 }
 
 .shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  box-shadow: 0 25px 25px rgba(36, 39, 44, 0.05) !important;
 }
 
 .shadow-lg {
@@ -11490,6 +11490,29 @@ textarea.form-control-lg {
 
 .infoParagraph {
   color: #8492a6;
+}
+
+.perfectSection .card {
+  transition: all 0.5s ease-in-out;
+}
+.perfectSection .card .cardIcon {
+  background: rgba(255, 87, 20, 0.1);
+  height: 85px;
+  width: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.perfectSection .card a {
+  color: #212529;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.perfectSection .card a:hover {
+  color: #ff5714;
+}
+.perfectSection .card:hover {
+  box-shadow: 0 25px 25px rgba(36, 39, 44, 0.05);
 }
 
 /*# sourceMappingURL=style.css.map */
