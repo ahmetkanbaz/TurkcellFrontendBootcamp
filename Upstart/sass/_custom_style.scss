@@ -94,5 +94,42 @@
 }
 
 .imgBorder {
-  border-right: #000000 3px dotted;
+  border-right: #000000 1px dotted;
+}
+.portfolio {
+  background-color: #f8f9fc;
+  .card-body {
+    .content {
+      bottom: 0;
+      margin-left: 5%;
+      color: #FFFFFF;
+      opacity: 0;
+      transition: all .3s ease-in-out;
+      a {
+        color: #FFFFFF;
+        transition: all .3s ease-in-out;
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+    .cardIcon {
+      opacity: 0;
+      transition: all .3s ease-in-out;
+    }
+    img {
+      transition: all .3s ease-in-out;
+    }
+    &:hover {
+      .content,
+      .cardIcon {
+        opacity: 1;
+      }
+      img {
+        transform: scale(1.04) rotate(2deg);
+
+      }
+    }
+  }
+  
 }

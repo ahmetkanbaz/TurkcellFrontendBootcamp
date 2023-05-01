@@ -11525,7 +11525,39 @@ textarea.form-control-lg {
 }
 
 .imgBorder {
-  border-right: #000000 3px dotted;
+  border-right: #000000 1px dotted;
+}
+
+.portfolio {
+  background-color: #f8f9fc;
+}
+.portfolio .card-body .content {
+  bottom: 0;
+  margin-left: 5%;
+  color: #FFFFFF;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.portfolio .card-body .content a {
+  color: #FFFFFF;
+  transition: all 0.3s ease-in-out;
+}
+.portfolio .card-body .content a:hover {
+  color: #ff5714;
+}
+.portfolio .card-body .cardIcon {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.portfolio .card-body img {
+  transition: all 0.3s ease-in-out;
+}
+.portfolio .card-body:hover .content,
+.portfolio .card-body:hover .cardIcon {
+  opacity: 1;
+}
+.portfolio .card-body:hover img {
+  transform: scale(1.04) rotate(2deg);
 }
 
 /*# sourceMappingURL=style.css.map */
