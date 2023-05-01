@@ -8058,6 +8058,10 @@ textarea.form-control-lg {
   font-size: 1rem !important;
 }
 
+.fs-7 {
+  font-size: 0.95rem !important;
+}
+
 .fst-italic {
   font-style: italic !important;
 }
@@ -11448,6 +11452,11 @@ textarea.form-control-lg {
   text-transform: uppercase;
 }
 
+.pSection {
+  max-width: 600px;
+  color: #8492a6;
+}
+
 .socials a {
   width: 35px;
   height: 35px;
@@ -11513,6 +11522,10 @@ textarea.form-control-lg {
 }
 .perfectSection .card:hover {
   box-shadow: 0 25px 25px rgba(36, 39, 44, 0.05);
+}
+
+.imgBorder {
+  border-right: #000000 3px dotted;
 }
 
 /*# sourceMappingURL=style.css.map */
