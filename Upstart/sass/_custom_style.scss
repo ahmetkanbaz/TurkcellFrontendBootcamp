@@ -143,3 +143,32 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.cardList {
+  .card {
+    box-shadow: 0 0 3px rgba(36,39,44,0.15);
+    transition: all .3s ease-in-out;
+    &:hover {
+      box-shadow: 0 15px 20px rgba(36,39,44,0.05);
+      transform: translateY(-10px);
+    }
+    li {
+      &:nth-child(2n) {
+        margin: .5rem 0;
+      }
+    }
+    a {
+      background-color: rgba(255,87,20,0.1);
+      border: 1px solid rgba(255,87,20,0.1);
+      color: #ff5714;
+      box-shadow: 0 3px 5px 0 rgba(255,87,20,0.1);
+      transition: all .3s ease-in-out;
+      &:hover {
+        background-color: #ff5714;
+        border: 1px solid #ff5714;
+        color: #FFFFFF;
+        box-shadow: 0 3px 5px 0 rgba(255,87,20,0.1);
+      }
+    }
+  }
+}
