@@ -10,6 +10,10 @@
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 .nav-link {
   text-transform: uppercase;
 }
@@ -147,10 +151,10 @@
 .cardList {
   .card {
     box-shadow: 0 0 3px rgba(36,39,44,0.15);
-    transition: all .3s ease-in-out;
+    transition: all .5s ease-in-out;
     &:hover {
       box-shadow: 0 15px 20px rgba(36,39,44,0.05);
-      transform: translateY(-10px);
+      transform: translateY(-5px);
     }
     li {
       &:nth-child(2n) {
@@ -175,6 +179,14 @@
 
 .creativeSection {
   background-color: #F8F9FC;
+  .cardTopIcon {
+    li {
+      &:nth-child(2) {
+        margin: .3rem 0;
+      }
+      @extend .socials;
+    }
+  }
 }
 
 /* Latest News Section */
