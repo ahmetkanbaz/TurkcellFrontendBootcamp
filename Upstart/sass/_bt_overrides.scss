@@ -1,1 +1,45 @@
-$primary: orange;
+$primary: #ff5714;
+$success: #8492a6;
+
+$nav-link-font-size: 14px;
+$nav-link-font-weight: 600;
+$navbar-light-color: #24272c;
+$navbar-light-active-color: $primary;
+$navbar-light-hover-color: $primary;
+
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 6,
+  7: $spacer * 16,
+  );
+  
+$btn-font-size: $spacer;
+$btn-padding-y: $spacer * .5;
+$btn-padding-x: $spacer * 1.25;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);
+
+$font-size-base: 1rem;
+$font-sizes: (
+  1: $font-size-base * 2.5,
+  2: $font-size-base * 2,
+  3: $font-size-base * 1.75,
+  4: $font-size-base * 1.5,
+  5: $font-size-base * 1.25,
+  6: $font-size-base,
+  7: $font-size-base * .95,
+);
+
+$box-shadow-sm: 0 25px 25px rgba(36,39,44,0.05);
