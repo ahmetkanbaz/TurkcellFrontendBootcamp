@@ -11461,13 +11461,13 @@ a {
   color: #8492a6;
 }
 
-.socials a, .creativeSection .cardTopIcon li a {
+.socials a, .creativeSection .card .cardTopIcon li a {
   width: 35px;
   height: 35px;
   background-color: #ff5714;
   transition: all 0.3s ease-in-out;
 }
-.socials a:hover, .creativeSection .cardTopIcon li a:hover {
+.socials a:hover, .creativeSection .card .cardTopIcon li a:hover {
   background-color: #cb3f07;
 }
 
@@ -11599,8 +11599,14 @@ a {
 .creativeSection {
   background-color: #F8F9FC;
 }
-.creativeSection .cardTopIcon li:nth-child(2) {
+.creativeSection .card .cardTopIcon {
+  display: none;
+}
+.creativeSection .card .cardTopIcon li:nth-child(2) {
   margin: 0.3rem 0;
+}
+.creativeSection .card:hover .cardTopIcon {
+  display: block;
 }
 
 /* Latest News Section */
