@@ -1,3 +1,6 @@
+body {
+  font-family: "Roboto Slab", serif;
+}
 .btn {
   outline: none;
   letter-spacing: 0.5px;
@@ -179,12 +182,20 @@ a {
 
 .creativeSection {
   background-color: #F8F9FC;
-  .cardTopIcon {
-    li {
-      &:nth-child(2) {
-        margin: .3rem 0;
+  .card {
+    .cardTopIcon {
+      display: none;
+      li {
+        &:nth-child(2) {
+          margin: .3rem 0;
+        }
+        @extend .socials;
       }
-      @extend .socials;
+    }
+    &:hover {
+      .cardTopIcon {
+        display: block;
+      }
     }
   }
 }
