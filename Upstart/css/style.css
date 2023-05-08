@@ -11436,6 +11436,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  font-family: "Roboto Slab", serif;
+}
+
 .btn {
   outline: none;
   letter-spacing: 0.5px;
@@ -11599,6 +11603,9 @@ a {
 .creativeSection {
   background-color: #F8F9FC;
 }
+.creativeSection .card {
+  transition: all 0.5s ease-in-out;
+}
 .creativeSection .card .cardTopIcon {
   display: none;
 }
@@ -11607,6 +11614,14 @@ a {
 }
 .creativeSection .card:hover .cardTopIcon {
   display: block;
+}
+.creativeSection .card:hover .infoCard {
+  display: block;
+  transform: translateY(-10px);
+}
+.creativeSection .card .infoCard {
+  display: none;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Latest News Section */

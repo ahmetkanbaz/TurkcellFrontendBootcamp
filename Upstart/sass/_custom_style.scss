@@ -183,6 +183,7 @@ a {
 .creativeSection {
   background-color: #F8F9FC;
   .card {
+    transition: all .5s ease-in-out;
     .cardTopIcon {
       display: none;
       li {
@@ -196,6 +197,14 @@ a {
       .cardTopIcon {
         display: block;
       }
+      .infoCard {
+        display: block;
+        transform: translateY(-10px);
+      }
+    }
+    .infoCard {
+      display: none;
+      transition: all .3s ease-in-out;
     }
   }
 }
