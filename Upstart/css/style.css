@@ -11695,75 +11695,24 @@ a {
   color: #778496;
 }
 
-.locationInfo h5, .locationInfo .h5 {
-  font-size: 18px;
-  margin-bottom: 0.5rem;
-  line-height: 1.5rem;
-  font-weight: 600;
-  margin-top: 0;
+footer {
+  background-color: #202942;
+}
+footer .footerSocial li {
+  width: 35px;
+  border: 1px solid #2e3d5b;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+footer .footerSocial li:hover {
+  background-color: #ff5714;
 }
 
 @media screen and (max-width: 992px) {
-  .rowImage {
-    flex-wrap: wrap;
-  }
-  .card {
-    width: 45%;
-  }
-  .rowLogo {
-    max-width: 960px;
-  }
-  .contentNews {
-    flex-wrap: wrap;
-  }
-  .cardNews {
-    width: 45%;
-  }
-  .message {
-    width: 50%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .rowInfo div {
-    width: 45%;
-  }
-  .card {
-    width: 100%;
-  }
-  .rowLogo {
-    flex-wrap: wrap;
-  }
-  .rowLogo div {
-    width: 50%;
-    margin-bottom: 30px;
-  }
-  .cardNews {
-    width: 100%;
-  }
-  .nameEmail input {
-    width: 45%;
-    margin: auto;
-  }
-  .contact {
-    padding: 60px 0;
-  }
-  .contactMain {
-    flex-wrap: wrap;
-  }
-  .message {
-    width: 100%;
-  }
-  .location {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-@media screen and (max-width: 576px) {
-  .contactMain {
-    width: 100%;
-  }
-  .contact {
-    max-width: 540px;
+  .imgBorder {
+    border-right: none;
+    border-bottom: #000000 1px dotted;
   }
 }
 
