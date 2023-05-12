@@ -11625,7 +11625,7 @@ a {
   margin: 0.3rem 0;
 }
 .creativeSection .card .infoCard {
-  bottom: -90px;
+  bottom: -100px;
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
@@ -11707,6 +11707,13 @@ footer .footerSocial li {
 }
 footer .footerSocial li:hover {
   background-color: #ff5714;
+}
+footer .shreet {
+  color: #FFFFFF;
+  transition: all 0.3s ease-in-out;
+}
+footer .shreet:hover {
+  color: #ff5714;
 }
 
 @media screen and (max-width: 992px) {
