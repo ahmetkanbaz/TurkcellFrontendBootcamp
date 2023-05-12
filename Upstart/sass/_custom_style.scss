@@ -201,7 +201,7 @@ a {
       }
     }
     .infoCard {
-      bottom: -90px;
+      bottom: -100px;
       transition: all .3s ease-in-out;
       text-align: center;
       h5 {
@@ -290,6 +290,13 @@ footer {
       &:hover {
         background-color: $primary;
       }
+    }
+  }
+  .shreet {
+    color: #FFFFFF;
+    transition: all .3s ease-in-out;
+    &:hover {
+      color: $primary;
     }
   }
 }
