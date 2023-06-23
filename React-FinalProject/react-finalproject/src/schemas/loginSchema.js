@@ -1,12 +1,20 @@
-import * as yup from 'yup'
+import * as yup from "yup";
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[\w\W]{8,}$/;
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().min(5).matches(passwordRules, {
-    message: 'Şifreniz en az bir büyük harf, bir küçük harf ve bir rakam içermelidir.'
-  }),
-})
+  loginEmail: yup
+  .string()
+  .email('Geçerli bir e-posta adresi giriniz.')
+  .required('E-Posta adresi boş bırakılamaz.'),
+  loginPassword: yup
+  .string()
+  .min(8, 'Şifreniz en az 8 karakterli olmalıdır.')
+  .matches(passwordRules, {
+    message:
+      "Şifreniz en az bir büyük ve küçük harf, rakam ve özel karakter içermelidir.",
+  })
+  .required('Şifre boş bırakılamaz.'),
+});
 
-export default loginSchema
+export default loginSchema;

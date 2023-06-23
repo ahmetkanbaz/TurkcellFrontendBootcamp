@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const schema = yup.object().shape({
+const schema = yup.object().shape({
   email: yup
     .string()
     .email("Geçerli bir email giriniz")

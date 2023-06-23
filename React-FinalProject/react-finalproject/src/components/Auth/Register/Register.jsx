@@ -2,12 +2,34 @@ import { Link } from "react-router-dom";
 import { BsFacebook, BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import logoMonito from "../../../assets/logoMonito.svg";
-import styled from "styled-components";
+import { useFormik } from "formik";
+import registerSchema from "../../../schemas/registerSchema";
+import { Logo, InputDiv } from "../AuthStyle";
+import { MdError } from "react-icons/md";
 const Register = () => {
-  const Logo = styled.img`
-    transform: rotate(-25deg);
-  `;
-
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    values,
+    touched,
+    errors,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      registerFirstName: "",
+      registerLastName: "",
+      registerEmail: "",
+      registerPassword: "",
+      confirmRegisterPassword: "",
+    },
+    validationSchema: registerSchema,
+    onSubmit: async (values, bag) => {
+      await new Promise((r) => setTimeout(r, 1000));
+      console.log(values);
+      bag.resetForm();
+    },
+  });
   return (
     <div className="container py-5">
       <div className="row justify-content-center align-items-center gap-3 p-5 bg-body-tertiary rounded-3">
@@ -16,30 +38,52 @@ const Register = () => {
             <Logo src={logoMonito} alt="" className="img-fluid w-25" />
             <h3>Yeni Kayıt Oluştur</h3>
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-lg-6 col-12">
-                <label htmlFor="registerFirstName"></label>
-                <input
-                  type="text"
-                  className="form-control shadow-none border-secondary"
-                  id="registerFirstName"
-                  name="registerFirstName"
-                  placeholder="Adınız..."
-                />
+                <InputDiv className="position-relative">
+                  <label htmlFor="registerFirstName"></label>
+                  <input
+                    type="text"
+                    className="form-control shadow-none border-secondary"
+                    id="registerFirstName"
+                    name="registerFirstName"
+                    placeholder="Adınız..."
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.registerFirstName}
+                    disabled={isSubmitting}
+                  />
+                  {touched.registerFirstName && errors.registerFirstName && (
+                    <div className="text-danger errorMessage position-absolute top-100 start-0">
+                      <MdError /> {errors.registerFirstName}
+                    </div>
+                  )}
+                </InputDiv>
               </div>
               <div className="col-lg-6 col-12">
-                <label htmlFor="registerLastName"></label>
-                <input
-                  type="text"
-                  id="registerLastName"
-                  name="registerLastName"
-                  placeholder="Soyadınız..."
-                  className="form-control shadow-none border-secondary"
-                />
+                <InputDiv className="position-relative">
+                  <label htmlFor="registerLastName"></label>
+                  <input
+                    type="text"
+                    id="registerLastName"
+                    name="registerLastName"
+                    placeholder="Soyadınız..."
+                    className="form-control shadow-none border-secondary"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.registerLastName}
+                    disabled={isSubmitting}
+                  />
+                  {touched.registerLastName && errors.registerLastName && (
+                    <div className="text-danger errorMessage position-absolute top-100 start-0">
+                      <MdError /> {errors.registerLastName}
+                    </div>
+                  )}
+                </InputDiv>
               </div>
             </div>
-            <div>
+            <InputDiv className="position-relative my-3">
               <label htmlFor="registerEmail"></label>
               <input
                 type="email"
@@ -47,9 +91,18 @@ const Register = () => {
                 id="registerEmail"
                 name="registerEmail"
                 placeholder="E-posta adresiniz..."
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.registerEmail}
+                disabled={isSubmitting}
               />
-            </div>
-            <div>
+              {touched.registerEmail && errors.registerEmail && (
+                <div className="text-danger errorMessage position-absolute top-100 start-0">
+                  <MdError /> {errors.registerEmail}
+                </div>
+              )}
+            </InputDiv>
+            <InputDiv className="position-relative">
               <label htmlFor="registerPassword"></label>
               <input
                 type="password"
@@ -57,18 +110,37 @@ const Register = () => {
                 id="registerPassword"
                 name="registerPassword"
                 placeholder="Şifreniz..."
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.registerPassword}
+                disabled={isSubmitting}
               />
-            </div>
-            <div>
-              <label htmlFor="registerPasswordAgain"></label>
+              {touched.registerPassword && errors.registerPassword && (
+                <div className="text-danger errorMessage position-absolute top-100 start-0">
+                  <MdError /> {errors.registerPassword}
+                </div>
+              )}
+            </InputDiv>
+            <InputDiv className="position-relative my-3">
+              <label htmlFor="confirmRegisterPassword"></label>
               <input
                 type="password"
                 className="border-secondary shadow-none form-control"
-                id="registerPasswordAgain"
-                name="registerPasswordAgain"
+                id="confirmRegisterPassword"
+                name="confirmRegisterPassword"
                 placeholder="Şifreniz Tekrar..."
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.confirmRegisterPassword}
+                disabled={isSubmitting}
               />
-            </div>
+              {touched.confirmRegisterPassword &&
+                errors.confirmRegisterPassword && (
+                  <div className="text-danger errorMessage position-absolute top-100 start-0">
+                    <MdError /> {errors.confirmRegisterPassword}
+                  </div>
+                )}
+            </InputDiv>
             <div>
               <button className="btn btn-info mt-3" type="submit">
                 Kayıt Ol

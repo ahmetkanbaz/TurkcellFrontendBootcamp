@@ -1,12 +1,33 @@
 import { Link } from "react-router-dom";
 import { BsFacebook, BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
-import styled from "styled-components";
-import logoMonito from '../../../assets/logoMonito.svg'
+import logoMonito from "../../../assets/logoMonito.svg";
+import loginSchema from "../../../schemas/loginSchema";
+import { useFormik } from "formik";
+import { MdError } from "react-icons/md";
+import { Logo, InputDiv } from "../AuthStyle";
 const Login = () => {
-  const Logo = styled.img`
-    transform: rotate(-25deg);
-  `;
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    values,
+    touched,
+    errors,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      loginEmail: "",
+      loginPassword: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: async (values, bag) => {
+      await new Promise((r) => setTimeout(r, 1000));
+      console.log(values);
+      bag.resetForm();
+    },
+  });
+
   return (
     <div className="container py-lg-5">
       <div className="row justify-content-center align-items-center bg-body-tertiary p-5 rounded-3 gap-3">
@@ -19,12 +40,12 @@ const Login = () => {
         </div>
         <div className="col-lg-4 col-md-6 col-12">
           <div>
-            <div className="d-flex gap-4 mb-4">
-              <Logo src={logoMonito} alt="" className="img-fluid w-25"/>
+            <div className="d-flex gap-4 mb-4 mb-lg-2">
+              <Logo src={logoMonito} alt="" className="img-fluid w-25" />
               <h2 className="text-center">Giriş Yap</h2>
             </div>
-            <form>
-              <div>
+            <form onSubmit={handleSubmit}>
+              <InputDiv className="position-relative">
                 <label htmlFor="loginEmail"></label>
                 <input
                   type="email"
@@ -32,9 +53,19 @@ const Login = () => {
                   name="loginEmail"
                   placeholder="E-Posta Adresiniz..."
                   className="form-control shadow-none border-secondary"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.loginEmail}
+                  disabled={isSubmitting}
                 />
-              </div>
-              <div>
+                {touched.loginEmail && errors.loginEmail && (
+                  <div className="text-danger errorMessage position-absolute top-100 start-0">
+                    <MdError /> {errors.loginEmail}
+                  </div>
+                )}
+              </InputDiv>
+
+              <InputDiv className="position-relative">
                 <label htmlFor="loginPassword"></label>
                 <input
                   type="password"
@@ -42,9 +73,18 @@ const Login = () => {
                   name="loginPassword"
                   placeholder="Şifreniz..."
                   className="form-control shadow-none border-secondary"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.loginPassword}
+                  disabled={isSubmitting}
                 />
-              </div>
-              <div className="d-flex justify-content-end align-items-center mt-1 mb-3">
+                {touched.loginPassword && errors.loginPassword && (
+                  <div className="text-danger errorMessage position-absolute start-0 top-100">
+                    <MdError /> {errors.loginPassword}
+                  </div>
+                )}
+              </InputDiv>
+              <div className="d-flex justify-content-end align-items-center mt-4 mb-2">
                 <Link
                   to="/forgot-password"
                   className="text-decoration-none text-black fst-bold"
@@ -52,48 +92,50 @@ const Login = () => {
                   Şifremi Unuttum
                 </Link>
               </div>
-              <div className="mt-4">
-                <p className="fst-italic text-center">
-                  Sosyal Medya İle Giriş Yap
-                </p>
-                <div className="d-flex justify-content-center gap-2">
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary d-flex justify-content-center align-items-center"
-                  >
-                    <BsFacebook />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-info d-flex justify-content-center align-items-center"
-                  >
-                    <FcGoogle />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary d-flex justify-content-center align-items-center"
-                  >
-                    <BsTwitter />
-                  </button>
-                </div>
-              </div>
-              <div className="d-flex justify-content-end align-items-center my-3">
-                <button type="submit" className="btn btn-info">
+              <div className="d-flex justify-content-end align-items-center">
+                <button
+                  type="submit"
+                  className="btn btn-info"
+                  disabled={isSubmitting}
+                >
                   Giriş Yap
                 </button>
               </div>
-              <div className="d-flex justify-content-center gap-3">
-                <p className="fst-italic align-self-center">
-                  Hesabınız Yok Mu?
-                </p>
-                <Link
-                  to="/auth/register"
-                  className="text-decoration-none fst-normal"
-                >
-                  Kayıt Ol
-                </Link>
-              </div>
             </form>
+            <div className="my-4">
+              <p className="fst-italic text-center">
+                Sosyal Medya İle Giriş Yap
+              </p>
+              <div className="d-flex justify-content-center gap-2">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary d-flex justify-content-center align-items-center"
+                >
+                  <BsFacebook />
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-info d-flex justify-content-center align-items-center"
+                >
+                  <FcGoogle />
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary d-flex justify-content-center align-items-center"
+                >
+                  <BsTwitter />
+                </button>
+              </div>
+            </div>
+            <div className="d-flex justify-content-center gap-3">
+              <p className="fst-italic align-self-center">Hesabınız Yok Mu?</p>
+              <Link
+                to="/auth/register"
+                className="text-decoration-none fst-normal"
+              >
+                Kayıt Ol
+              </Link>
+            </div>
           </div>
         </div>
       </div>
