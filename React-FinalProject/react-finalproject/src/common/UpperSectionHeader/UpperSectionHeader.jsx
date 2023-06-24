@@ -7,7 +7,7 @@ const UpperSectionHeader = ({ upperTitle, upperSubTitleSpan,  upperSubTitle, upp
       <div className="d-flex justify-content-between align-items-center">
         <div className="d-flex align-items-center gap-2">
           {
-            upperSubTitleSpan && <span className="">{upperSubTitleSpan}</span>
+            upperSubTitleSpan && <span className="pt-2">{upperSubTitleSpan}</span>
           }
           <p className="text-capitalize subTitle mb-0">{upperSubTitle}</p>
         </div>

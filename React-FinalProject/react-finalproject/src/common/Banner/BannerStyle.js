@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const BannerContainer = styled.div`
   h1 {
-    color: #002a48;
-    font-size: 3.75rem;
+    color: ${(props) => props.color};
+    font-size: ${(props) => (props.sizetitle)};
     line-height: 68px;
   }
 
   h3 {
-    color: #002a48;
-    font-size: 46px;
+    color: ${(props) => props.color};
+    font-size: ${(props) => (props.size)};
     font-weight: 700;
     line-height: 60px;
   }

@@ -10,7 +10,16 @@ const HeroBanner = () => {
   return (
     <HeroBannerDiv className="position-relative pt-5">
       {/* <div className="position-absolute layout1"></div> */}
-      <Banner title={title} subTitle={subTitle} description={description} image={homeBanner} reverse="null" />
+      <Banner
+        title={title}
+        sizetitle='3.75rem'
+        color='#002A48'
+        subTitle={subTitle}
+        subTitleSize="2.875rem"
+        description={description}
+        image={homeBanner}
+        reverse="null"
+      />
     </HeroBannerDiv>
   );
 };
