@@ -3,8 +3,9 @@ import logoMonito from "../../assets/logoMonito.svg";
 import { Nav } from "./NavbarStyle";
 const Navbar = () => {
   const navigate = useNavigate();
+  
   return (
-    <Nav className="navbar navbar-expand-lg sticky-top py-3">
+    <Nav className="navbar navbar-expand-lg fixed-top py-3">
       <div className="container">
         <button
           className="navbar-toggler"
@@ -22,7 +23,7 @@ const Navbar = () => {
         </Link>
         <h2 className="d-flex d-lg-none">Search Button</h2>
         <div
-          className="collapse navbar-collapse ms-3"
+          className="collapse navbar-collapse ps-3"
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav mb-2 me-5 mb-lg-0 gap-lg-5 gap-md-3">
@@ -47,7 +48,7 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <div className="d-flex gap-5 w-100">
+          <div className="d-flex flex-wrap gap-lg-5 gap-3 w-100">
             <form role="search" className="me-auto">
               <input
                 className="form-control rounded-pill shadow-none border-0"

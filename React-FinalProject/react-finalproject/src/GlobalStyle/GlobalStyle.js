@@ -6,14 +6,14 @@ import fontLight from '../fonts/SVN-GilroyLight.otf';
 export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'SVN-Gilroy';
-    src: url('${fontBold}') format('opentype');
+    src: url('${fontBold}') format('otf');
     font-weight: bold;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'SVN-Gilroy';
-    src: url('${fontLight}')} format('opentype');
+    src: url('${fontLight}')} format('otf');
     font-weight: normal;
     font-style: normal;
   }
@@ -21,6 +21,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: 'SVN-Gilroy', sans-serif;
+    box-sizing: border-box;
   }
 `;
