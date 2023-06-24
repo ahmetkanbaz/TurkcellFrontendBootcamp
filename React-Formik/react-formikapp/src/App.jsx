@@ -1,13 +1,13 @@
-import FormikForm from "./FormikForm"
+import FormikForm from "./FormikForm";
+import Top from "./components/Top";
 
 function App() {
-
   return (
     <>
-      <h1>Vite + React</h1>
+      <Top />
       <FormikForm />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
