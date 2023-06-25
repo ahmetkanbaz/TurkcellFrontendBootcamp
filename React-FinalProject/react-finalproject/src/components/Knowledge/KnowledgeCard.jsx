@@ -1,22 +1,31 @@
-const KnowledgeCard = () => {
+import PropTypes from 'prop-types'
+import {KnowledgeDescription} from './KnowledgeStyle'
+const KnowledgeCard = ({knowledge}) => {
+  const {id, title, img, description, category} = knowledge
   return (
     <div className="col-lg-4 col-md-6 col-12">
-      <div className="card">
+      <div className="card border-0 bg-white p-2">
         <img
-          src="https://cdn.dsmcdn.com/mnresize/1200/1800/ty953/product/media/images/20230615/13/385779009/496224798/1/1_org_zoom.jpg"
+          src={img}
           alt=""
+          className='object-fit-cover rounded-3'
         />
         <div className="card-body">
-          <span className="bg-info rounded-pill px-1">Pet knowledge</span>
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            voluptatum.
-          </p>
+          <span className="rounded-pill fw-bold">{category}</span>
+          <h5 className="card-title fw-bold py-2">
+            {title}
+          </h5>
+          <KnowledgeDescription className="card-text" id={id}>
+            {description}
+          </KnowledgeDescription>
         </div>
       </div>
     </div>
   );
 };
+
+KnowledgeCard.propTypes = {
+  knowledge: PropTypes.object
+}
 
 export default KnowledgeCard;
