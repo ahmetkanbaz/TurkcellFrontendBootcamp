@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import registerSchema from "../../../schemas/registerSchema";
 import { Logo, InputDiv } from "../AuthStyle";
 import { MdError } from "react-icons/md";
+import {RegisterBg} from '../AuthStyle'
 const Register = () => {
   const {
     handleSubmit,
@@ -32,7 +33,7 @@ const Register = () => {
   });
   return (
     <div className="container py-5">
-      <div className="row justify-content-center align-items-center gap-3 p-5 bg-body-tertiary rounded-3">
+      <RegisterBg className="row justify-content-center align-items-center gap-3 p-5 rounded-3">
         <div className="col-lg-4 col-md-6 col-12">
           <div className="d-flex gap-3 mb-2">
             <Logo src={logoMonito} alt="" className="img-fluid w-25" />
@@ -178,7 +179,7 @@ const Register = () => {
             className="img-fluid rounded-3"
           />
         </div>
-      </div>
+      </RegisterBg>
     </div>
   );
 };

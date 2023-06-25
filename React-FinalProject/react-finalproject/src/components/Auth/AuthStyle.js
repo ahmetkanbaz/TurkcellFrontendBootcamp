@@ -6,6 +6,10 @@ export const Logo = styled.img`
 
 export const InputDiv = styled.div`
   .errorMessage {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
+`;
+
+export const RegisterBg = styled.div`
+  background-color: #f9f9f9;
 `;

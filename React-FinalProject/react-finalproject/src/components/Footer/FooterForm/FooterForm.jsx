@@ -8,7 +8,7 @@ const FooterForm = () => {
             Register now so you don't miss our programs
           </h4>
         </div>
-        <div className="col-lg-7 col-12 bg-white formWrapper">
+        <div className="col-lg-8 col-12 bg-white formWrapper">
           <div className="row">
             <div className="col-lg-9">
               <form>
