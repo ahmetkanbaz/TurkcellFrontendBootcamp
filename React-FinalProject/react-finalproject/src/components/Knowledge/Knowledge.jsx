@@ -30,7 +30,7 @@ const Knowledge = () => {
     <KnowledgeContainer className="container-fluid bg-body-tertiary">
       <div className="container py-5">
         <UpperSectionHeader upperTitle='You already know ?' upperSubTitle='Useful pet knowledge' upperButtonText='View more'/>
-        <div className="row py-3">
+        <div className="row py-5">
           {
             knowledgeData.map((knowledge) => <KnowledgeCard key={knowledge.id} knowledge={knowledge}/>)
           }

@@ -11,7 +11,7 @@ const Banner = ({
   reverse,
 }) => {
   let alignEnd = reverse === "flex-row-reverse" ? "align-items-end" : "";
-  const textEnd = reverse === "flex-row-reverse" ? "text-end" : "";
+  const textEnd = reverse === "flex-row-reverse" ? " text-center text-lg-end" : "";
   return (
     <BannerContainer
       className="container"

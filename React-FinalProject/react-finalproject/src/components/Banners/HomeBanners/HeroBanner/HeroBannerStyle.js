@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const HeroBannerDiv = styled.div`
-  font-family: "SVN-Gilroy";
   background: linear-gradient(
     134deg,
     #fceed5 6.17%,

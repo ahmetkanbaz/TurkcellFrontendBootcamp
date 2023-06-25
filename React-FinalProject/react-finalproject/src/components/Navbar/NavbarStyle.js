@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  font-family: "SVN-Gilroy", sans-serif;
   img {
     width: 7.1875rem;
     height: 2.5rem;

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const KnowledgeContainer = styled.div`
-  font-family: "SVN-Gilroy";
   .card {
     box-shadow: 0px 4px 28px -2px rgba(0, 0, 0, 0.08);
     border-radius: 0.75rem;
@@ -25,7 +24,6 @@ export const KnowledgeContainer = styled.div`
       -webkit-box-orient: vertical;
       color: #242b33;
       text-overflow: ellipsis;
-      whitespace: nowrap;
       font-size: 0.875rem;
       line-height: 1.25rem;
     }
