@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { MdError } from "react-icons/md";
 import { Logo, InputDiv } from "../AuthStyle";
 import Button from "../../../common/Button/Button";
+import Toast from "../../../common/Toast/Toast";
 const Login = () => {
   const {
     handleSubmit,
@@ -24,6 +25,7 @@ const Login = () => {
     validationSchema: loginSchema,
     onSubmit: async (values, bag) => {
       await new Promise((r) => setTimeout(r, 1000));
+      Toast({ message: "This is a toastify", type: "success" });
       console.log(values);
       bag.resetForm();
     },
