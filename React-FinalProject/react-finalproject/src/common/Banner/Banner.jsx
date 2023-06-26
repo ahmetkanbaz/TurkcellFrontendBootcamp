@@ -31,13 +31,13 @@ const Banner = ({
             <Button
               icon={<AiOutlinePlayCircle size='1.5rem'/>}
               iconPosition="right"
-              padding = '0.875rem 1.75rem 0.625rem 1.75rem'
+              padding = '0.875rem 1.75rem'
               buttonText = 'View Intro'
               color = '#003459'
               backgroundcolor = 'transparent'
             />
             <Button
-              padding = '0.875rem 1.75rem 0.625rem 1.75rem'
+              padding = '0.875rem 1.75rem'
               buttonText = 'Explore Now'
               color = '#FDFDFD'
               backgroundcolor = '#003459'

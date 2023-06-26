@@ -60,14 +60,14 @@ const Navbar = () => {
             <div className="d-flex gap-2 col">
               <Button
                 padding="0.275rem 1.75rem"
-                buttonText="Giriş Yap"
+                buttonText="Login"
                 color="#FDFDFD"
                 backgroundcolor="#003459"
                 onClick={() => navigate("/auth/login")}
               />
               <Button
                 padding="0.275rem 1.75rem"
-                buttonText='Yeni Kayıt Oluştur'
+                buttonText='Register'
                 color="#003459"
                 backgroundcolor="transparent"
                 onClick={() => navigate("/auth/register")}

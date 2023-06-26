@@ -5,12 +5,14 @@ import AuthLayout from "../layouts/AuthLayout/AuthLayout";
 import Login from "../components/Auth/Login/Login";
 import Register from "../components/Auth/Register/Register";
 import AllProducts from "../views/AllProducts/AllProducts";
+import DetailProductPage from "../views/DetailProductPage/DetailProductPage";
 
 const Router = () => {
   const routes = useRoutes([
     {path: '/', element: <DashboardLayout />, children: [
       {path: '/', element: <Home />},
-      {path: '/products', element: <AllProducts />}
+      {path: '/products', element: <AllProducts />},
+      {path: '/detailproduct/:id', element: <DetailProductPage />}
     ]},
     {path: '/auth', element: <AuthLayout />, children: [
       {path: '/auth/login', element: <Login />},

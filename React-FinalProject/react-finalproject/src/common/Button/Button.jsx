@@ -25,7 +25,7 @@ const Button = ({
       type={type}
     >
       {iconPosition === "left" && icon}
-      {buttonText}
+      {iconPosition === "center" ? icon : buttonText}
       {iconPosition === "right" && icon}
     </CustomButton>
   );

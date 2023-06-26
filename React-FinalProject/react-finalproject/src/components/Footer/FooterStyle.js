@@ -44,7 +44,7 @@ export const FooterContainer = styled.footer`
     .footerMenu {
       padding: 0rem 0rem 2.5rem 0rem;
       border-bottom: 1px solid #ccd1d2;
-      span {
+      span, a {
         color: #00171f;
         font-weight: 500;
         line-height: 1.5rem;

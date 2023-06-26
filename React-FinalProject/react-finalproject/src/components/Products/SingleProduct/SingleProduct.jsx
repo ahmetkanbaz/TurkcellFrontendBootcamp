@@ -1,8 +1,10 @@
 import {BsFillCartPlusFill} from 'react-icons/bs'
 import {SingleCard, ProductTitle, ProductPrice} from './SingleProductStyle'
-const SingleProduct = () => {
+import PropTypes from 'prop-types'
+import {BsInfoCircle} from 'react-icons/bs'
+const SingleProduct = ({columnSize}) => {
   return (
-    <div className="col-lg-3 col-md-4 col-6">
+    <div className={columnSize}>
       <SingleCard className="card p-2 border-0 shadow-sm">
         <img
           src="https://picsum.photos/200/300"
@@ -12,20 +14,24 @@ const SingleProduct = () => {
         <div className="card-body">
           <ProductTitle className="card-title">Title</ProductTitle>
           <p className="card-text text-truncate mb-1">Description</p>
-          <div className='d-flex justify-content-between pb-2'>
+          <div className='d-flex justify-content-lg-between flex-wrap pb-2'>
             <span>Rating</span>
             <span>Stok Adedi:</span>
           </div>
           <p className='mb-1 category'>Kategori</p>
           <ProductPrice className="fw-bold mb-1 price">Fiyat</ProductPrice>
           <div className="d-flex justify-content-lg-evenly justify-content-between align-items-center">
-            <BsFillCartPlusFill size={'1.7rem'} cursor={'pointer'}/>
-            <button className='btn btn-danger'>Detay</button>
+            <BsFillCartPlusFill size={'1.5rem'} cursor={'pointer'}/>
+            <BsInfoCircle size={'1.5rem'} cursor={'pointer'} color='#003459'/>
           </div>
         </div>
       </SingleCard>
     </div>
   );
 };
+
+SingleProduct.propTypes = {
+  columnSize: PropTypes.string
+}
 
 export default SingleProduct;

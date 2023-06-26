@@ -14,19 +14,14 @@ const ProductsSetTwo = () => {
           onClick={() => navigate('/products')}
         />
         <div className="row g-3 py-3">
-          <SingleProduct />
-          <SingleProduct />
-          <SingleProduct />
-          <SingleProduct />
-          <SingleProduct />
-          <SingleProduct />
-          <SingleProduct />
-          <SingleProduct />
-        </div>
-        <div className="d-md-none d-flex justify-content-center">
-          <button className="btn btn-info rounded-pill w-75">
-            View more
-          </button>
+          <SingleProduct columnSize='col-lg-3 col-md-4 col-6'/>
+          <SingleProduct columnSize='col-lg-3 col-md-4 col-6'/>
+          <SingleProduct columnSize='col-lg-3 col-md-4 col-6'/>
+          <SingleProduct columnSize='col-lg-3 col-md-4 col-6'/>
+          <SingleProduct columnSize='col-lg-3 col-md-4 col-6'/>
+          <SingleProduct columnSize='col-lg-3 col-md-4 col-6'/>
+          <SingleProduct columnSize='col-lg-3 col-md-4 col-6'/>
+          <SingleProduct columnSize='col-lg-3 col-md-4 col-6'/>
         </div>
       </div>
     </div>
