@@ -4,7 +4,7 @@ import {AdoptionReversContainer} from '../AdoptionReversStyle'
 
 const AdoptionBanner = () => {
   return (
-    <AdoptionReversContainer bg='#FFB775' className="pt-5 px-5 pt-lg-0 container">
+    <AdoptionReversContainer bg='#FFB775' className="p-5 pt-lg-0 container d-none d-lg-flex">
       <Banner
         title="Adoption"
         sizetitle="3.25rem"

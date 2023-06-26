@@ -6,6 +6,7 @@ import loginSchema from "../../../schemas/loginSchema";
 import { useFormik } from "formik";
 import { MdError } from "react-icons/md";
 import { Logo, InputDiv } from "../AuthStyle";
+import Button from "../../../common/Button/Button";
 const Login = () => {
   const {
     handleSubmit,
@@ -93,13 +94,14 @@ const Login = () => {
                 </Link>
               </div>
               <div className="d-flex justify-content-end align-items-center">
-                <button
-                  type="submit"
-                  className="btn btn-info"
+                <Button
                   disabled={isSubmitting}
-                >
-                  Giriş Yap
-                </button>
+                  type="submit"
+                  padding=".5rem 1.75rem"
+                  buttonText="Giriş Yap"
+                  color="#FDFDFD"
+                  backgroundcolor="#003459"
+                />
               </div>
             </form>
             <div className="my-4">

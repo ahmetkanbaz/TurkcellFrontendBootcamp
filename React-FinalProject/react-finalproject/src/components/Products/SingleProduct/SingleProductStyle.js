@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 export const SingleCard = styled.div`
+  img {
+    height: 16.5rem;
+    @media screen and (max-width: 768px) {
+      height: 10.5625rem;
+    }
+  }
   span,
   .category {
     color: #667479;

@@ -6,7 +6,7 @@ const SingleProduct = () => {
       <SingleCard className="card p-2 border-0 shadow-sm">
         <img
           src="https://picsum.photos/200/300"
-          className="card-img-top"
+          className="card-img-top object-fit-cover"
           alt=""
         />
         <div className="card-body">

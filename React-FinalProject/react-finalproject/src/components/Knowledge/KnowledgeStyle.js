@@ -5,7 +5,7 @@ export const KnowledgeContainer = styled.div`
     box-shadow: 0px 4px 28px -2px rgba(0, 0, 0, 0.08);
     border-radius: 0.75rem;
     img {
-      height: 30rem;
+      height: 15.1875rem;
     }
     span {
       color: #fdfdfd;

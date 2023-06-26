@@ -7,6 +7,7 @@ import registerSchema from "../../../schemas/registerSchema";
 import { Logo, InputDiv } from "../AuthStyle";
 import { MdError } from "react-icons/md";
 import {RegisterBg} from '../AuthStyle'
+import Button from '../../../common/Button/Button'
 const Register = () => {
   const {
     handleSubmit,
@@ -143,9 +144,15 @@ const Register = () => {
                 )}
             </InputDiv>
             <div>
-              <button className="btn btn-info mt-3" type="submit">
-                Kayıt Ol
-              </button>
+              <Button
+                  disabled={isSubmitting}
+                  type="submit"
+                  padding=".5rem 1.75rem"
+                  buttonText="Kayıt Ol"
+                  color="#FDFDFD"
+                  backgroundcolor="#003459"
+                  className='mt-4'
+                />
             </div>
             <div className="d-flex align-items-center justify-content-center gap-3">
               <p className="mt-3 fst-italic">Sosyal Medya ile Üye Ol</p>

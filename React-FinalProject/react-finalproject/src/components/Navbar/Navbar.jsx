@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import logoMonito from "../../assets/logoMonito.svg";
 import { Nav } from "./NavbarStyle";
+import Button from '../../common/Button/Button'
 const Navbar = () => {
   const navigate = useNavigate();
-  
+
   return (
     <Nav className="navbar navbar-expand-lg fixed-top py-3">
       <div className="container">
@@ -28,14 +29,14 @@ const Navbar = () => {
         >
           <ul className="navbar-nav mb-2 me-5 mb-lg-0 gap-lg-5 gap-md-3">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link to={'/'} className="nav-link">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link to={'/products'} className="nav-link">
                 Category
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
@@ -48,27 +49,29 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <div className="d-flex flex-wrap gap-lg-5 gap-3 w-100">
-            <form role="search" className="me-auto">
+          <div className="row gap-3 gap-lg-0 w-100 align-items-center">
+            <form role="search" className="col">
               <input
                 className="form-control rounded-pill shadow-none border-0"
                 type="search"
                 placeholder="Search something here!"
               />
             </form>
-            <div className="d-flex gap-2">
-              <button
-                className="btn btn-primary"
+            <div className="d-flex gap-2 col">
+              <Button
+                padding="0.275rem 1.75rem"
+                buttonText="Giriş Yap"
+                color="#FDFDFD"
+                backgroundcolor="#003459"
                 onClick={() => navigate("/auth/login")}
-              >
-                Giriş Yap
-              </button>
-              <button
-                className="btn btn-success"
+              />
+              <Button
+                padding="0.275rem 1.75rem"
+                buttonText='Yeni Kayıt Oluştur'
+                color="#003459"
+                backgroundcolor="transparent"
                 onClick={() => navigate("/auth/register")}
-              >
-                Yeni Kayıt Oluştur
-              </button>
+              />
             </div>
           </div>
         </div>

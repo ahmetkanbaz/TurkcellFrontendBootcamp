@@ -25,6 +25,20 @@ export const FooterContainer = styled.footer`
         border-radius: 14px;
         padding: 0.75rem;
         gap: 0.75rem;
+        input {
+          border-radius: 8px;
+          border: 1px solid #99a2a5;
+          padding: 0.875rem 1.75rem;
+        }
+        button {
+          color: #fdfdfd;
+          background-color: #003459;
+          display: flex;
+          padding: 0.875rem 1.75rem;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        }
       }
     }
     .footerMenu {
@@ -36,7 +50,12 @@ export const FooterContainer = styled.footer`
         line-height: 1.5rem;
       }
       .footerMenuItems {
-        gap: 2.5rem;
+        &:nth-child(1) {
+          gap: 1.5rem;
+        }
+        &:nth-child(2) {
+          gap: 2rem;
+        }
       }
     }
     .footerBottom {

@@ -2,14 +2,14 @@
 const FooterForm = () => {
   return (
     <div className="container footerForm">
-      <div className="row gap-3 align-items-center">
+      <div className="row align-items-center">
         <div className="col-lg-4 col-12">
           <h4 className="fw-bold text-capitalize">
             Register now so you don't miss our programs
           </h4>
         </div>
         <div className="col-lg-8 col-12 bg-white formWrapper">
-          <div className="row">
+          <div className="row gap-2 gap-lg-0">
             <div className="col-lg-9">
               <form>
                 <input
@@ -20,7 +20,7 @@ const FooterForm = () => {
               </form>
             </div>
             <div className="col-lg-3">
-              <button className="btn btn-primary w-100" type="submit">
+              <button className="btn" type="submit">
                 Subcribe Now
               </button>
             </div>
