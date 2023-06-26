@@ -4,17 +4,19 @@ import Button from "../../common/Button/Button";
 import { LiaCommentDotsSolid } from "react-icons/lia";
 import { DetailProductContainer } from "./DetailProductStyle";
 import {FiShare2} from 'react-icons/fi'
+import ProductSlider from "./ProductSlider/ProductSlider";
 const DetailProduct = () => {
+  const productImages = [
+    'https://picsum.photos/200/300',
+    'https://cdn.pazarium.com.tr/ip-detayli-beli-lastikli-dar-paca-siyah-pantolon-kadin-pantolon-sumeyye-tekstil-390959-66-O.jpg',
+    'https://picsum.photos/200/300'
+  ];
   return (
     <DetailProductContainer>
       <div className="container detailContainerWrapper p-3">
         <div className="row">
           <div className="col-lg-6 col-12">
-            <img
-              src="https://cdn.pazarium.com.tr/ip-detayli-beli-lastikli-dar-paca-siyah-pantolon-kadin-pantolon-sumeyye-tekstil-390959-66-O.jpg"
-              className="img-fluid w-100 object-fit-cover rounded-3"
-              alt="detailProduct"
-            />
+            <ProductSlider images={productImages} />
           </div>
           <div className="col-lg-6 col-12">
             <nav
