@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Button from "../../common/Button/Button";
 import { LiaCommentDotsSolid } from "react-icons/lia";
 import { DetailProductContainer } from "./DetailProductStyle";
@@ -10,12 +10,23 @@ import detailPageTwo from "../../assets/detailPage/detailPageTwo.svg";
 import {BsFacebook, BsTwitter, BsInstagram, BsYoutube} from 'react-icons/bs'
 import RandomProducts from "./RandomProducts/RandomProducts";
 import DetailTable from "./DetailTable/DetailTable";
-import { useParams } from "react-router-dom";
+import {fetchDetailProduct} from '../../utils/request'
+import { useEffect } from "react";
+import {useDispatch, useSelector} from 'react-redux'
 const DetailProduct = () => {
   const {id} = useParams()
+  const dispatch = useDispatch()
+  const detailProduct = useSelector((state) => state.detailProduct.detailProduct)
+  const loading = useSelector((state) => state.detailProduct.loading)
+  const error = useSelector((state) => state.detailProduct.error)
+  useEffect(() => {
+    dispatch(fetchDetailProduct(id))
+  }, [id])
+
   const productImages = [
+    detailProduct.image,
     "https://picsum.photos/200/300",
-    "https://cdn.pazarium.com.tr/ip-detayli-beli-lastikli-dar-paca-siyah-pantolon-kadin-pantolon-sumeyye-tekstil-390959-66-O.jpg",
+    "https://picsum.photos/200/300",
     "https://picsum.photos/200/300",
     "https://picsum.photos/200/300",
     "https://picsum.photos/200/300",
@@ -23,6 +34,9 @@ const DetailProduct = () => {
     "https://picsum.photos/200/300",
     "https://picsum.photos/200/300",
   ];
+
+  if(loading) return <h1>Loading...</h1>
+  if(error) return <h1>Error...</h1>
   return (
     <DetailProductContainer>
       <div className="container">
@@ -110,7 +124,7 @@ const DetailProduct = () => {
           </div>
         </div>
         </div>
-      <RandomProducts />
+      <RandomProducts id={id}/>
       </div>
     </DetailProductContainer>
   );

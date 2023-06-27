@@ -1,18 +1,18 @@
 import UpperSectionHeader from "../../../common/UpperSectionHeader/UpperSectionHeader";
 import SingleProduct from "../../Products/SingleProduct/SingleProduct";
 import { useSelector } from "react-redux";
+import PropTypes from 'prop-types'
 
-const RandomProducts = () => {
+const RandomProducts = ({id}) => {
   const randomNumbers = [];
   const allProducts = useSelector((state) => state.products.products);
 
   while (randomNumbers.length < 8) {
     const randomNumber = Math.floor(Math.random() * 20) + 1;
-    if (!randomNumbers.includes(randomNumber)) {
+    if (!randomNumbers.includes(randomNumber) && randomNumber != id) {
       randomNumbers.push(randomNumber);
     }
   }
-  console.log(randomNumbers);
 
   const randomProducts = allProducts.filter((singleProduct) =>
     randomNumbers.includes(singleProduct.id)
@@ -35,5 +35,9 @@ const RandomProducts = () => {
     </div>
   );
 };
+
+RandomProducts.propTypes = {
+  id: PropTypes.string
+}
 
 export default RandomProducts;

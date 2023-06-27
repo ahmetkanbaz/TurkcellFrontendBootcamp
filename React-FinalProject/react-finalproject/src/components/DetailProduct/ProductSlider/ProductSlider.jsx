@@ -16,7 +16,7 @@ const ProductSlider = ({ images }) => {
         <img
           src={image.original}
           alt={image.originalAlt}
-          style={{ borderRadius: "10px", width: '100%', height: '30rem', objectFit:'cover' }}
+          style={{ borderRadius: "10px", width: '30rem', height: '30rem', objectFit:'contain' }}
         />
       </div>
     );
