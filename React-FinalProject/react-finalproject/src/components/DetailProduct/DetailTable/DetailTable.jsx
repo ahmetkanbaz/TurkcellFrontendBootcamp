@@ -1,29 +1,28 @@
 import PropTypes from 'prop-types'
-const DetailTable = ({id}) => {
+const DetailTable = ({detailProduct}) => {
   return (
     <table className="table">
       <tbody>
         <tr>
           <td>Id</td>
-          <td>: #{id}</td>
+          <td>: #{detailProduct.id}</td>
         </tr>
         <tr>
           <td>Category</td>
-          <td>: Mens Clothing</td>
+          <td>: {detailProduct.category}</td>
         </tr>
         <tr>
           <td>Rating</td>
-          <td>: 3 Yıldız</td>
+          <td>: {detailProduct.rating?.rate}</td>
         </tr>
         <tr>
           <td>Count</td>
-          <td>: 120</td>
+          <td>: {detailProduct.rating?.count}</td>
         </tr>
         <tr>
           <td>Description</td>
           <td>
-            : Pure breed Shih Tzu. Good body structure. With MKA cert and
-            microchip. Father from champion lineage.
+            : {detailProduct.description}
           </td>
         </tr>
       </tbody>
@@ -32,7 +31,7 @@ const DetailTable = ({id}) => {
 };
 
 DetailTable.propTypes = {
-  id: PropTypes.string
+  detailProduct: PropTypes.object
 }
 
 export default DetailTable;

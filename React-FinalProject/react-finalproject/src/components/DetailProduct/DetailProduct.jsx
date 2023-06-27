@@ -63,11 +63,11 @@ const DetailProduct = () => {
                 <FiShare2 size="1.25rem"  cursor='pointer'/>
                 <h6 className="fw-bold align-items-center pt-2">Share:</h6>
               </div>
-              <div className="d-flex gap-3">
-                <BsFacebook size='1.25rem' opacity='.5' cursor='pointer'/>
-                <BsTwitter size='1.25rem' opacity='.5' cursor='pointer'/>
-                <BsInstagram size='1.25rem' opacity='.5' cursor='pointer'/>
-                <BsYoutube size='1.25rem' opacity='.5' cursor='pointer'/>
+              <div className="d-flex gap-3 opacity-50">
+                <BsFacebook size='1.25rem' cursor='pointer'/>
+                <BsTwitter size='1.25rem' cursor='pointer'/>
+                <BsInstagram size='1.25rem' cursor='pointer'/>
+                <BsYoutube size='1.25rem' cursor='pointer'/>
               </div>
             </div>
           </div>
@@ -91,8 +91,8 @@ const DetailProduct = () => {
                 <li className="breadcrumb-item active">Product Detail</li>
               </ol>
             </nav>
-            <h4 className="fw-bold">Product Name</h4>
-            <h5 className="fw-bold lh-lg">Product Price</h5>
+            <h4 className="fw-bold">{detailProduct.title}</h4>
+            <h5 className="fw-bold lh-lg">{detailProduct.price} VND</h5>
             <div className="d-flex gap-3 pb-md-3 pb-0">
               <Button
                 padding="0.875rem 1.75rem"
@@ -120,7 +120,7 @@ const DetailProduct = () => {
                 <h5 className="fw-bold align-items-center share">Share</h5>
               </div>
             </div>
-            <DetailTable id={id}/>
+            <DetailTable detailProduct={detailProduct}/>
           </div>
         </div>
         </div>

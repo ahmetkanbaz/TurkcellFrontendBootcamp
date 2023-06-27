@@ -24,8 +24,9 @@ export const DetailProductContainer = styled.div`
         color: #667479;
         font-size: 0.875rem;
         font-weight: 500;
+        padding: .5rem 0.6875rem;
         &:nth-child(1) {
-          width: 40%;
+          width: 32%;
         }
       }
     }

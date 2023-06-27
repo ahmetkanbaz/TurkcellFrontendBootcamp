@@ -24,7 +24,7 @@ const SingleProduct = ({ columnSize, singleProduct }) => {
               <span>Stok Adedi: {singleProduct.rating.count}</span>
             </div>
             <p className="mb-1 category">Kategori: {singleProduct.category}</p>
-            <ProductPrice className="fw-bold mb-1 price">Fiyat: {singleProduct.price}</ProductPrice>
+            <ProductPrice className="fw-bold mb-1 price">Fiyat: {singleProduct.price} VND</ProductPrice>
             <div className="d-flex justify-content-lg-evenly justify-content-between align-items-center">
               <BsFillCartPlusFill size={"1.5rem"} cursor={"pointer"} />
               <BsInfoCircle
