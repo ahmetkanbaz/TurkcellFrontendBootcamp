@@ -1,8 +1,18 @@
 import Button from "../../common/Button/Button";
 import SingleProduct from "../Products/SingleProduct/SingleProduct";
 import { AiOutlineDown } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const FilterProducts = () => {
+  const allProducts = useSelector((state) => state.products.products);
+  const loading = useSelector((state) => state.products.loading);
+  const error = useSelector((state) => state.products.error);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>There is an error</div>;
+  }
   return (
     <div>
       <div className="container py-4">
@@ -72,26 +82,13 @@ const FilterProducts = () => {
               />
             </div>
             <div className="row justify-content-center g-3">
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
-              <SingleProduct columnSize="col-lg-4 col-md-6 col-6" />
+              {allProducts.map((singleProduct) => (
+                <SingleProduct
+                  key={singleProduct.id}
+                  singleProduct={singleProduct}
+                  columnSize="col-lg-4 col-md-6 col-6"
+                />
+              ))}
             </div>
           </div>
         </div>

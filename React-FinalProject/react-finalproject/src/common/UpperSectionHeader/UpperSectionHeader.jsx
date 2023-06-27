@@ -19,17 +19,19 @@ const UpperSectionHeader = ({
           )}
           <p className="text-capitalize subTitle mb-0">{upperSubTitle}</p>
         </div>
-        <Button
-          className="d-none d-md-flex"
-          padding="0.75rem 1.75rem"
-          color="#003459"
-          backgroundcolor="transparent"
-          icon={<AiOutlineRight size="1.25rem" />}
-          iconPosition="right"
-          fontSize="0.875rem"
-          buttonText={upperButtonText}
-          onClick={onClick}
-        />
+        {upperButtonText && (
+          <Button
+            className="d-none d-md-flex"
+            padding="0.75rem 1.75rem"
+            color="#003459"
+            backgroundcolor="transparent"
+            icon={<AiOutlineRight size="1.25rem" />}
+            iconPosition="right"
+            fontSize="0.875rem"
+            buttonText={upperButtonText}
+            onClick={onClick}
+          />
+        )}
       </div>
     </UpperSectionHeaderDiv>
   );

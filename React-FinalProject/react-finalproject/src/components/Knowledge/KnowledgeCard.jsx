@@ -8,7 +8,7 @@ const KnowledgeCard = ({knowledge}) => {
         <img
           src={img}
           alt=""
-          className='object-fit-cover rounded-3'
+          className='object-fit-contain rounded-3'
         />
         <div className="card-body">
           <span className="rounded-pill fw-bold">{category}</span>

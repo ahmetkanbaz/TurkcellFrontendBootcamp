@@ -3,9 +3,19 @@ import UpperSectionHeader from "../../../common/UpperSectionHeader/UpperSectionH
 import SingleProduct from "../SingleProduct/SingleProduct";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineRight } from "react-icons/ai";
+import {useSelector} from 'react-redux'
 
 const ProductsSetOne = () => {
   const navigate = useNavigate();
+  const allProducts = useSelector((state) => state.products.products)
+  const loading = useSelector((state) => state.products.loading)
+  const error = useSelector((state) => state.products.error)
+  if (loading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    return <div>There is an error</div>
+  }
   return (
     <div>
       <div className="container py-5">
@@ -16,14 +26,11 @@ const ProductsSetOne = () => {
           onClick={() => navigate("/products")}
         />
         <div className="row g-3 py-3">
-          <SingleProduct columnSize="col-lg-3 col-md-4 col-6" />
-          <SingleProduct columnSize="col-lg-3 col-md-4 col-6" />
-          <SingleProduct columnSize="col-lg-3 col-md-4 col-6" />
-          <SingleProduct columnSize="col-lg-3 col-md-4 col-6" />
-          <SingleProduct columnSize="col-lg-3 col-md-4 col-6" />
-          <SingleProduct columnSize="col-lg-3 col-md-4 col-6" />
-          <SingleProduct columnSize="col-lg-3 col-md-4 col-6" />
-          <SingleProduct columnSize="col-lg-3 col-md-4 col-6" />
+        {
+            allProducts.slice(0, 8).map((singleProduct) => (
+              <SingleProduct key={singleProduct.id} singleProduct = {singleProduct} columnSize="col-lg-3 col-md-4 col-6"/>
+            ))
+          }
         </div>
         <div className="d-md-none d-flex justify-content-center">
           <Button
