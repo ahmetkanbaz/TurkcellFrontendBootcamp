@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { FilterProductsStyle } from "./FilterProductsStyle";
 import { useEffect } from "react";
 import {
-  setSearchQuery,
   setFilterOptions,
   setSortOption,
   setFilteredProducts,
@@ -24,10 +23,6 @@ const FilterProducts = () => {
     (state) => state.filter.filteredProducts
   );
 
-  const handleSearch = (e) => {
-    dispatch(setSearchQuery(e.target.value));
-  };
-
   const handleSort = (selectedItem) => {
     dispatch(setSortOption(selectedItem));
   };
@@ -40,7 +35,7 @@ const FilterProducts = () => {
       setFilterOptions(
         checked
           ? [...filterOptions, value]
-          : filterOptions.filter((option) => option != value)
+          : filterOptions.filter((option) => option !== value)
       )
     );
   };
@@ -108,49 +103,47 @@ const FilterProducts = () => {
         <div className="row pb-5">
           <div className="col-md-3 sticky-lg-top">
             <h4 className="pb-3 fw-bold">Filter</h4>
-            <div className="card">
-              <div className="card-header">Filter Products</div>
-              <div className="card-body">
-                <div className="form-group">
-                  <label htmlFor="category">Category</label>
-                  <select
-                    className="form-control"
-                    name="category"
-                    id="category"
-                  >
-                    <option value="">Select Category</option>
-                    <option value="1">Category 1</option>
-                    <option value="2">Category 2</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="price">Price</label>
-                  <input
-                    type="range"
-                    className="form-range"
-                    min="0"
-                    max="1000"
-                    id="price"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="rating">Rating</label>
-                  <input
-                    type="range"
-                    className="form-range"
-                    min="0"
-                    max="5"
-                    id="rating"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="brand">Brand</label>
-                  <select className="form-control" name="brand" id="brand">
-                    <option value="">Select Brand</option>
-                    <option value="1">Brand 1</option>
-                    <option value="2">Brand 2</option>
-                  </select>
-                </div>
+            <div className="border-bottom py-3 filterCategory">
+              <h6 className="fw-bold">Category</h6>
+              <div>
+                <input
+                  type="checkbox"
+                  id="electronicsCheckbox"
+                  value="electronics"
+                  checked={filterOptions?.includes("electronics")}
+                  onChange={(e) => handleFilter(e)}
+                />
+                <label htmlFor="electronicsCheckbox">Electronics</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="jeweleryCheckbox"
+                  value="jewelery"
+                  checked={filterOptions?.includes("jewelery")}
+                  onChange={(e) => handleFilter(e)}
+                />
+                <label htmlFor="jeweleryCheckbox">Jewelery</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="mensClothingCheckbox"
+                  value="men's clothing"
+                  checked={filterOptions?.includes("men's clothing")}
+                  onChange={(e) => handleFilter(e)}
+                />
+                <label htmlFor="mensClothingCheckbox">Men`s Clothing</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="womensClothingCheckbox"
+                  value="women's clothing"
+                  checked={filterOptions?.includes("women's clothing")}
+                  onChange={(e) => handleFilter(e)}
+                />
+                <label htmlFor="womensClothingCheckbox">Women`s Clothing</label>
               </div>
             </div>
           </div>
@@ -158,7 +151,7 @@ const FilterProducts = () => {
             <div className="d-flex justify-content-between pb-3 align-items-center">
               <div className="d-flex gap-3 align-items-center">
                 <h4 className="fw-bold">Products</h4>
-                <span>{allProducts.length} puppies</span>
+                <span>{filteredProducts.length} puppies</span>
               </div>
               <div className="dropdown">
                 <Button

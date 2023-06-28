@@ -1,9 +1,23 @@
 import { Link, useNavigate } from "react-router-dom";
 import logoMonito from "../../assets/logoMonito.svg";
 import { Nav } from "./NavbarStyle";
-import Button from '../../common/Button/Button'
+import Button from "../../common/Button/Button";
+import { setSearchQuery } from "../../redux/slices/filterSlice/filterSlice";
+import { useDispatch } from "react-redux";
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    dispatch(setSearchQuery(e.target.value));
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      navigate("/products")
+      e.preventDefault();
+    }
+  };
 
   return (
     <Nav className="navbar navbar-expand-lg fixed-top py-3">
@@ -29,12 +43,12 @@ const Navbar = () => {
         >
           <ul className="navbar-nav mb-2 me-5 mb-lg-0 gap-lg-5 gap-md-3">
             <li className="nav-item">
-              <Link to={'/'} className="nav-link">
+              <Link to={"/"} className="nav-link">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={'/products'} className="nav-link">
+              <Link to={"/products"} className="nav-link">
                 Category
               </Link>
             </li>
@@ -55,6 +69,8 @@ const Navbar = () => {
                 className="form-control rounded-pill shadow-none border-0"
                 type="search"
                 placeholder="Search something here!"
+                onChange={handleSearch}
+                onKeyDown={handleEnter}
               />
             </form>
             <div className="d-flex gap-2 col">
@@ -67,7 +83,7 @@ const Navbar = () => {
               />
               <Button
                 padding="0.275rem 1.75rem"
-                buttonText='Register'
+                buttonText="Register"
                 color="#003459"
                 backgroundcolor="transparent"
                 onClick={() => navigate("/auth/register")}
