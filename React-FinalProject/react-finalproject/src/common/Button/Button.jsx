@@ -12,6 +12,7 @@ const Button = ({
   disabled,
   className,
   onClick,
+  dataBsToggle,
 }) => {
   return (
     <CustomButton
@@ -23,6 +24,7 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
       type={type}
+      data-bs-toggle={dataBsToggle}
     >
       {iconPosition === "left" && icon}
       {iconPosition === "center" ? icon : buttonText}
@@ -43,6 +45,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   onClick: PropTypes.func,
+  dataBsToggle: PropTypes.string,
 };
 
 export default Button;

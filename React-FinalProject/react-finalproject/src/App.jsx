@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import {fetchAllProducts} from './utils/request'
+import { setFilteredProducts } from "./redux/slices/filterSlice/filterSlice";
 
 function App() {
   const dispatch = useDispatch()
@@ -14,7 +15,9 @@ function App() {
     if (allProducts.length === 0) {
       dispatch(fetchAllProducts())
     }
-  }, [])
+    dispatch(setFilteredProducts(allProducts))
+  }, [allProducts])
+
   return (
     <>
       <GlobalStyle />
