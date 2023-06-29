@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { loadingAllProducts, getAllProducts, errorAllProducts } from '../redux/slices/productsSlice/productsSlice'
 import { loadingDetailProduct, getDetailProduct, errorDetailProduct } from '../redux/slices/productDetailSlice/productDetailSlice';
+import { setAllUsers, setErrorUsers } from '../redux/slices/usersSlice/userSlice';
 
 const apiUrl = 'http://localhost:3000';
 
@@ -23,5 +24,30 @@ export const fetchDetailProduct = (id) => async (dispatch) => {
   }
   catch (error) {
     dispatch(errorDetailProduct(error.message))
+  }
+}
+
+export const fetchAllUsers = () => async (dispatch) => {
+  try {
+    const response = await axios.get(`${apiUrl}/users`)
+    dispatch(setAllUsers(response.data))
+  }
+  catch (error) {
+    dispatch(setErrorUsers(error.message))
+  }
+}
+
+export const fetchLoginUser = async (values) => {
+  try {
+    const response = await axios.get(`${apiUrl}/users`, {
+      params: {
+        userEmail: values.email,
+        userPassword: values.password
+      }
+    })
+    return response
+  }
+  catch (error) {
+    return error.message
   }
 }

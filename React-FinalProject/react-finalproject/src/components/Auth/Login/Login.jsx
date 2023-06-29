@@ -8,6 +8,7 @@ import { MdError } from "react-icons/md";
 import { Logo, InputDiv } from "../AuthStyle";
 import Button from "../../../common/Button/Button";
 import Toast from "../../../common/Toast/Toast";
+import {fetchLoginUser} from '../../../utils/request'
 const Login = () => {
   const {
     handleSubmit,
@@ -25,8 +26,12 @@ const Login = () => {
     validationSchema: loginSchema,
     onSubmit: async (values, bag) => {
       await new Promise((r) => setTimeout(r, 1000));
-      Toast({ message: "This is a toastify", type: "success" });
-      console.log(values);
+      const loginUser = {
+        userEmail: values.loginEmail,
+        userPassword: values.loginPassword,
+      };
+      const response = await fetchLoginUser(loginUser);
+      console.log(response)
       bag.resetForm();
     },
   });

@@ -1,14 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFacebook, BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import logoMonito from "../../../assets/logoMonito.svg";
 import { useFormik } from "formik";
 import registerSchema from "../../../schemas/registerSchema";
-import { Logo, InputDiv } from "../AuthStyle";
+import { Logo, InputDiv, RegisterBg } from "../AuthStyle";
 import { MdError } from "react-icons/md";
-import {RegisterBg} from '../AuthStyle'
-import Button from '../../../common/Button/Button'
+import Button from "../../../common/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { postNewUser } from "../../../utils/posts";
+import Toast from "../../../common/Toast/Toast";
+import { setUser } from "../../../redux/slices/usersSlice/userSlice";
 const Register = () => {
+  const allUsers = useSelector((state) => state.user.allUsers);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
   const {
     handleSubmit,
     handleChange,
@@ -28,7 +34,45 @@ const Register = () => {
     validationSchema: registerSchema,
     onSubmit: async (values, bag) => {
       await new Promise((r) => setTimeout(r, 1000));
-      console.log(values);
+      const newUser = {
+        id: Date.now(),
+        userName: values.registerFirstName,
+        userSurname: values.registerLastName,
+        userEmail: values.registerEmail,
+        userPassword: values.registerPassword,
+        isAdmin: false,
+      };
+      const isUserExist = allUsers.find(
+        (user) => user.userEmail === newUser.userEmail
+      );
+      if (isUserExist) {
+        Toast({
+          message:
+            "Girmiş olduğunuz mail adresine ait daha önceden kurulmuş bir hesap bulunmaktadır.",
+          type: "warning",
+        });
+        bag.setSubmitting(false);
+        return;
+      }
+      const response = await postNewUser(newUser);
+      if (response.status === 201) {
+        Toast({
+          message:
+            "Kayıt işlemi başarıyla tamamlandı. Anasayfaya yönlendiriliyorsunuz.",
+          type: "success",
+        });
+        dispatch(setUser(newUser));
+        localStorage.setItem("isLogin", JSON.stringify(newUser));
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      } else {
+        Toast({
+          message:
+            "Kayıt işlemi bazı sebeplerden dolayı başarısız oldu. Lütfen daha sonra tekrar deneyiniz.",
+          type: "error",
+        });
+      }
       bag.resetForm();
     },
   });
@@ -145,14 +189,14 @@ const Register = () => {
             </InputDiv>
             <div>
               <Button
-                  disabled={isSubmitting}
-                  type="submit"
-                  padding=".5rem 1.75rem"
-                  buttonText="Kayıt Ol"
-                  color="#FDFDFD"
-                  backgroundcolor="#003459"
-                  className='mt-4'
-                />
+                disabled={isSubmitting}
+                type="submit"
+                padding=".5rem 1.75rem"
+                buttonText="Kayıt Ol"
+                color="#FDFDFD"
+                backgroundcolor="#003459"
+                className="mt-4"
+              />
             </div>
             <div className="d-flex align-items-center justify-content-center gap-3">
               <p className="mt-3 fst-italic">Sosyal Medya ile Üye Ol</p>

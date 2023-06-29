@@ -3,10 +3,15 @@ import logoMonito from "../../assets/logoMonito.svg";
 import { Nav } from "./NavbarStyle";
 import Button from "../../common/Button/Button";
 import { setSearchQuery } from "../../redux/slices/filterSlice/filterSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Toast from "../../common/Toast/Toast";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import {IoLogOutOutline} from 'react-icons/io5'
+import {setUser} from '../../redux/slices/usersSlice/userSlice'
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loginUser = useSelector((state) => state.user.user);
 
   const handleSearch = (e) => {
     dispatch(setSearchQuery(e.target.value));
@@ -14,10 +19,30 @@ const Navbar = () => {
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
-      navigate("/products")
+      navigate("/products");
       e.preventDefault();
     }
   };
+
+  const handleToastAllProducts = () => {
+    Object.keys(loginUser).length === 0 &&
+      Toast({
+        message: "Tüm ürünleri görüntüleyebilmek için lütfen giriş yapınız.",
+        type: "warning",
+      });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLogin')
+    dispatch(setUser({}))
+    Toast({
+      message: 'Başarılı bir şekilde çıkış yaptınız. Anasayfa\'ya yönlendiriliyorsunuz.',
+      type: 'success'
+    })
+    setTimeout(() => {
+      navigate('/')
+    }, 2000)
+  }
 
   return (
     <Nav className="navbar navbar-expand-lg fixed-top py-3">
@@ -48,7 +73,15 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/products"} className="nav-link">
+              <Link
+                to={
+                  Object.keys(loginUser).length !== 0
+                    ? "/products"
+                    : "/auth/login"
+                }
+                className="nav-link"
+                onClick={handleToastAllProducts}
+              >
                 Category
               </Link>
             </li>
@@ -73,22 +106,59 @@ const Navbar = () => {
                 onKeyDown={handleEnter}
               />
             </form>
-            <div className="d-flex gap-2 col">
-              <Button
-                padding="0.275rem 1.75rem"
-                buttonText="Login"
-                color="#FDFDFD"
-                backgroundcolor="#003459"
-                onClick={() => navigate("/auth/login")}
-              />
-              <Button
-                padding="0.275rem 1.75rem"
-                buttonText="Register"
-                color="#003459"
-                backgroundcolor="transparent"
-                onClick={() => navigate("/auth/register")}
-              />
-            </div>
+            {Object.keys(loginUser).length === 0 ? (
+              <div className="d-flex gap-2 col">
+                <Button
+                  padding="0.275rem 1.75rem"
+                  buttonText="Login"
+                  color="#FDFDFD"
+                  backgroundcolor="#003459"
+                  onClick={() => navigate("/auth/login")}
+                />
+                <Button
+                  padding="0.275rem 1.75rem"
+                  buttonText="Sign Up"
+                  color="#003459"
+                  backgroundcolor="transparent"
+                  onClick={() => navigate("/auth/register")}
+                />
+              </div>
+            ) : (
+              <div className="d-flex gap-2 col">
+                <Button
+                  padding="0.275rem 1.75rem"
+                  buttonText="Cart"
+                  color="#FDFDFD"
+                  icon={<AiOutlineShoppingCart size="1.2rem" />}
+                  iconPosition="right"
+                  backgroundcolor="#003459"
+                  onClick={() => navigate("/cart")}
+                />
+                <div className="dropdown">
+                  <Button
+                    padding="0.275rem 1.75rem"
+                    className="dropdown-toggle"
+                    backgroundcolor="#FDFDFD"
+                    buttonText="Profile"
+                    dataBsToggle="dropdown"
+                  />
+                  <ul className="dropdown-menu border-0 bg-transparent">
+                    <li>
+                      <Button
+                        className="dropdown-item"
+                        type="button"
+                        buttonText="Logout"
+                        backgroundcolor="#FDFDFD"
+                        color="#003459"
+                        icon={<IoLogOutOutline size="1.2rem" />}
+                        iconPosition="right"
+                        onClick={handleLogout}
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

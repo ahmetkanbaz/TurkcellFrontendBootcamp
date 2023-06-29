@@ -3,20 +3,28 @@ import Router from "./routes/Router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
-import {useDispatch, useSelector} from 'react-redux'
-import {fetchAllProducts} from './utils/request'
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProducts, fetchAllUsers } from "./utils/request";
 import { setFilteredProducts } from "./redux/slices/filterSlice/filterSlice";
+import { setUser } from "./redux/slices/usersSlice/userSlice";
 
 function App() {
-  const dispatch = useDispatch()
-  const allProducts = useSelector((state) => state.products.products)
+  const dispatch = useDispatch();
+  const allProducts = useSelector((state) => state.products.products);
+  const allUsers = useSelector((state) => state.user.allUsers);
 
   useEffect(() => {
     if (allProducts.length === 0) {
-      dispatch(fetchAllProducts())
+      dispatch(fetchAllProducts());
     }
-    dispatch(setFilteredProducts(allProducts))
-  }, [allProducts])
+    dispatch(setFilteredProducts(allProducts));
+    if (allUsers.length === 0) {
+      dispatch(fetchAllUsers());
+    }
+    //localde veri olup olmadığı
+    const user = localStorage.getItem("isLogin");
+    user && dispatch(setUser(JSON.parse(user)));
+  }, [allProducts]);
 
   return (
     <>
@@ -24,7 +32,7 @@ function App() {
       <Router />
       <ToastContainer
         position="bottom-right"
-        autoClose={3000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
