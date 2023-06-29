@@ -251,42 +251,10 @@
       "isAdmin": true
     },
     {
-      "id": 1687962663529,
+      "id": 1688042709775,
       "userName": "Deneme123456",
       "userSurname": "Ahmet Kanbaz",
-      "userEmail": "ahmetkanbaz21@gmail.com",
-      "userPassword": "ahmetK3363.",
-      "isAdmin": false
-    },
-    {
-      "id": 1687963190969,
-      "userName": "Kitap33",
-      "userSurname": "Ahmet KANBAZ",
       "userEmail": "ahmetkanbaz33@gmail.com",
-      "userPassword": "ahmetK3363.",
-      "isAdmin": false
-    },
-    {
-      "id": 1687986045167,
-      "userName": "Ahmet",
-      "userSurname": "KANBAZ",
-      "userEmail": "ahmetkanbaz3@gmail.com",
-      "userPassword": "ahmetK3363.",
-      "isAdmin": false
-    },
-    {
-      "id": 1687989451812,
-      "userName": "Deneme123456",
-      "userSurname": "Ahmet Kanbaz",
-      "userEmail": "ahmetkanbaz1@gmail.com",
-      "userPassword": "ahmetK3363.",
-      "isAdmin": false
-    },
-    {
-      "id": 1687991984501,
-      "userName": "Deneme123456",
-      "userSurname": "Ahmet Kanbaz",
-      "userEmail": "ahmetkaasdasnbaz@gmail.com",
       "userPassword": "ahmetK3363.",
       "isAdmin": false
     }

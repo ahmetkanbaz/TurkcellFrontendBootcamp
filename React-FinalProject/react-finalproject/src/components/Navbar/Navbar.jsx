@@ -6,12 +6,29 @@ import { setSearchQuery } from "../../redux/slices/filterSlice/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "../../common/Toast/Toast";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import {IoLogOutOutline} from 'react-icons/io5'
-import {setUser} from '../../redux/slices/usersSlice/userSlice'
+import { IoLogOutOutline } from "react-icons/io5";
+import { setUser } from "../../redux/slices/usersSlice/userSlice";
+import { useState, useEffect } from "react";
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginUser = useSelector((state) => state.user.user);
+  const [navBackgroundColor, setNavBackgroundColor] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setNavBackgroundColor(true);
+    } else {
+      setNavBackgroundColor(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleSearch = (e) => {
     dispatch(setSearchQuery(e.target.value));
@@ -19,7 +36,18 @@ const Navbar = () => {
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
-      navigate("/products");
+      if (Object.keys(loginUser).length === 0) {
+        Toast({
+          message:
+            "Girmiş olduğunuz ifadeye göre ürün araması yapabilmek için lütfen giriş yapınız.",
+          type: "warning",
+        });
+        setTimeout(() => {
+          navigate("/auth/login");
+        }, 2000);
+      } else {
+        navigate("/products");
+      }
       e.preventDefault();
     }
   };
@@ -33,19 +61,21 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('isLogin')
-    dispatch(setUser({}))
+    localStorage.removeItem("isLogin");
+    dispatch(setUser({}));
     Toast({
-      message: 'Başarılı bir şekilde çıkış yaptınız. Anasayfa\'ya yönlendiriliyorsunuz.',
-      type: 'success'
-    })
-    setTimeout(() => {
-      navigate('/')
-    }, 2000)
-  }
+      message:
+        "Başarılı bir şekilde çıkış yaptınız. Anasayfa'ya yönlendiriliyorsunuz.",
+      type: "success",
+    });
+    navigate("/");
+  };
 
   return (
-    <Nav className="navbar navbar-expand-lg fixed-top py-3">
+    <Nav
+      className="navbar navbar-expand-lg fixed-top py-3"
+      navbackgroundcolor={navBackgroundColor.toString()}
+    >
       <div className="container">
         <button
           className="navbar-toggler"
@@ -142,7 +172,7 @@ const Navbar = () => {
                     buttonText="Profile"
                     dataBsToggle="dropdown"
                   />
-                  <ul className="dropdown-menu border-0 bg-transparent">
+                  <ul className="dropdown-menu bg-transparent border-0">
                     <li>
                       <Button
                         className="dropdown-item"

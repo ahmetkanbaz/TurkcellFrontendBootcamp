@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFacebook, BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import logoMonito from "../../../assets/logoMonito.svg";
@@ -8,8 +8,12 @@ import { MdError } from "react-icons/md";
 import { Logo, InputDiv } from "../AuthStyle";
 import Button from "../../../common/Button/Button";
 import Toast from "../../../common/Toast/Toast";
-import {fetchLoginUser} from '../../../utils/request'
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../../redux/slices/usersSlice/userSlice";
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const allUsers = useSelector((state) => state.user.allUsers);
   const {
     handleSubmit,
     handleChange,
@@ -25,13 +29,30 @@ const Login = () => {
     },
     validationSchema: loginSchema,
     onSubmit: async (values, bag) => {
-      await new Promise((r) => setTimeout(r, 1000));
-      const loginUser = {
-        userEmail: values.loginEmail,
-        userPassword: values.loginPassword,
-      };
-      const response = await fetchLoginUser(loginUser);
-      console.log(response)
+      const isEmailPasswordExist = allUsers.find(
+        (user) =>
+          user.userEmail === values.loginEmail &&
+          user.userPassword === values.loginPassword
+      );
+
+      if(isEmailPasswordExist) {
+        Toast({
+          message: 'Giriş Başarılı.',
+          type: 'success'
+        })
+        dispatch(setUser(isEmailPasswordExist))
+        localStorage.setItem('isLogin', JSON.stringify(isEmailPasswordExist))
+        setTimeout(() => {
+          navigate('/')
+        }, 2000);
+      }
+      else {
+        Toast({
+          message: 'Girdiğiniz bilgiler hatalıdır. Lütfen girmiş olduğunuz bilgileri kontrol ediniz.',
+          type: 'error'
+        })
+        bag.setSubmitting(false)
+      }
       bag.resetForm();
     },
   });

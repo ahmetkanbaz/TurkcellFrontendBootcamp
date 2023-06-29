@@ -36,18 +36,3 @@ export const fetchAllUsers = () => async (dispatch) => {
     dispatch(setErrorUsers(error.message))
   }
 }
-
-export const fetchLoginUser = async (values) => {
-  try {
-    const response = await axios.get(`${apiUrl}/users`, {
-      params: {
-        userEmail: values.email,
-        userPassword: values.password
-      }
-    })
-    return response
-  }
-  catch (error) {
-    return error.message
-  }
-}

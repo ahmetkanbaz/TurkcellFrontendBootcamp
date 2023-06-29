@@ -33,7 +33,6 @@ const Register = () => {
     },
     validationSchema: registerSchema,
     onSubmit: async (values, bag) => {
-      await new Promise((r) => setTimeout(r, 1000));
       const newUser = {
         id: Date.now(),
         userName: values.registerFirstName,
@@ -44,7 +43,7 @@ const Register = () => {
       };
       const isUserExist = allUsers.find(
         (user) => user.userEmail === newUser.userEmail
-      );
+        );
       if (isUserExist) {
         Toast({
           message:
