@@ -40,6 +40,7 @@ const Register = () => {
         userEmail: values.registerEmail,
         userPassword: values.registerPassword,
         isAdmin: false,
+        userCart: []
       };
       const isUserExist = allUsers.find(
         (user) => user.userEmail === newUser.userEmail

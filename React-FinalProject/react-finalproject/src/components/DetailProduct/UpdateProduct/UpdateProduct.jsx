@@ -1,17 +1,29 @@
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
-import {useFormik} from 'formik'
+import { useFormik } from "formik";
 import updateProductSchema from "../../../schemas/updateProductSchema";
 import FormError from "../../../common/FormError/FormError";
+import Button from "../../../common/Button/Button";
+import {updateProduct} from '../../../utils/posts'
+import { useDispatch } from "react-redux";
+import { fetchDetailProduct } from "../../../utils/request";
 
 function UpdateProduct({ detailProduct, handleClose, show }) {
+  const dispatch = useDispatch();
   const productsCategories = [
     "Electronics",
     "Jewelery",
     "Men's clothing",
     "Women's clothing",
   ];
-  const {handleSubmit, handleChange, handleBlur, values, touched, errors, isSubmitting} = useFormik({
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    touched,
+    errors,
+    isSubmitting,
+  } = useFormik({
     initialValues: {
       modalProductName: detailProduct.title,
       modalProductDescription: detailProduct.description,
@@ -19,14 +31,30 @@ function UpdateProduct({ detailProduct, handleClose, show }) {
       modalProductPrice: detailProduct.price,
       modalProductStock: detailProduct.rating.count,
       modalProductRate: detailProduct.rating.rate,
-      modalProductCategory: detailProduct.category
+      modalProductCategory: detailProduct.category,
     },
     validationSchema: updateProductSchema,
     onSubmit: async (values, bag) => {
-      console.log(values)
-      bag.resetForm()
-    }
-  })
+      const updatedProduct = {
+        id: detailProduct.id,
+        title: values.modalProductName,
+        description: values.modalProductDescription,
+        image: values.modalProductImage,
+        price: values.modalProductPrice,
+        rating: {
+          count: values.modalProductStock,
+          rate: values.modalProductRate,
+        },
+        category: values.modalProductCategory,
+      };
+      const response = await updateProduct(updatedProduct)
+      detailProduct = response;
+      dispatch(fetchDetailProduct(response.id));
+      // console.log(detailProduct);
+      handleClose()
+      bag.resetForm();
+    },
+  });
   return (
     <>
       <Modal show={show} onHide={handleClose} centered scrollable>
@@ -35,106 +63,120 @@ function UpdateProduct({ detailProduct, handleClose, show }) {
         </Modal.Header>
         <Modal.Body>
           <form className="d-flex flex-column gap-4" onSubmit={handleSubmit}>
-            <div>
+            <div className="position-relative">
               <label htmlFor="modalProductName">Name:</label>
               <input
                 type="text"
                 className="form-control shadow-none border-secondary"
                 id="modalProductName"
                 name="modalProductName"
-                value={values.modalProductName}
+                defaultValue={detailProduct.title}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isSubmitting}
               />
-              {
-                touched.modalProductName && errors.modalProductName && (
-                  <FormError message={errors.modalProductName} />
-                )
-              }
+              {touched.modalProductName && errors.modalProductName && (
+                <FormError message={errors.modalProductName} />
+              )}
             </div>
-            <div>
+            <div className="position-relative">
               <label htmlFor="modalProductDescription">Description:</label>
               <textarea
                 type="text"
                 className="form-control shadow-none border-secondary"
                 id="modalProductDescription"
                 name="modalProductDescription"
-                value={detailProduct.description}
+                defaultValue={detailProduct.description}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isSubmitting}
               />
+              {touched.modalProductDescription &&
+                errors.modalProductDescription && (
+                  <FormError message={errors.modalProductDescription} />
+                )}
             </div>
-            <div>
+            <div className="position-relative">
               <label htmlFor="modalProductImage">Image Url:</label>
               <input
                 type="url"
                 className="form-control shadow-none border-secondary"
                 id="modalProductImage"
                 name="modalProductImage"
-                value={detailProduct.image}
+                defaultValue={detailProduct.image}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isSubmitting}
               />
+              {touched.modalProductImage && errors.modalProductImage && (
+                <FormError message={errors.modalProductImage} />
+              )}
             </div>
             <div className="row">
               <div className="col-lg-6 col-12">
-                <div>
+                <div className="position-relative">
                   <label htmlFor="modalProductPrice">Price:</label>
                   <input
                     type="text"
                     className="form-control shadow-none border-secondary"
                     id="modalProductPrice"
                     name="modalProductPrice"
-                    value={detailProduct.price}
+                    defaultValue={detailProduct.price}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled={isSubmitting}
                   />
+                  {touched.modalProductPrice && errors.modalProductPrice && (
+                    <FormError message={errors.modalProductPrice} />
+                  )}
                 </div>
               </div>
               <div className="col-lg-6 col-12">
-                <div>
+                <div className="position-relative">
                   <label htmlFor="modalProductStock">Stock Count:</label>
                   <input
                     type="text"
                     className="form-control shadow-none border-secondary"
                     id="modalProductStock"
                     name="modalProductStock"
-                    value={detailProduct.stock}
+                    defaultValue={detailProduct.rating?.count}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled={isSubmitting}
                   />
+                  {touched.modalProductStock && errors.modalProductStock && (
+                    <FormError message={errors.modalProductStock} />
+                  )}
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col-lg-6 col-12">
-                <div>
+                <div className="position-relative">
                   <label htmlFor="modalProductRate">Rate:</label>
                   <input
                     type="text"
                     className="form-control shadow-none border-secondary"
                     id="modalProductRate"
                     name="modalProductRate"
-                    value={detailProduct.rating.rate}
+                    defaultValue={detailProduct.rating?.rate}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled={isSubmitting}
                   />
+                  {touched.modalProductRate && errors.modalProductRate && (
+                    <FormError message={errors.modalProductRate} />
+                  )}
                 </div>
               </div>
               <div className="col-lg-6 col-12">
-                <div>
+                <div className="position-relative">
                   <label htmlFor="modalProductCategory">Category:</label>
                   <select
                     className="form-control shadow-none border-secondary"
                     id="modalProductCategory"
                     name="modalProductCategory"
-                    value={detailProduct.category}
+                    defaultValue={detailProduct.category}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled={isSubmitting}
@@ -151,17 +193,25 @@ function UpdateProduct({ detailProduct, handleClose, show }) {
                         )
                     )}
                   </select>
+                  {touched.modalProductCategory && errors.modalProductCategory && (
+                    <FormError message={errors.modalProductCategory} />
+                  )}
                 </div>
               </div>
             </div>
-          <Button variant="primary" type="submit">Kaydet</Button>
+            <div className="d-flex justify-content-lg-end justify-content-center sticky-bottom bg-white border-top pt-3">
+              <Button
+                buttonText="Save Changes"
+                padding=".42rem 1.4rem"
+                color="#FDFDFD"
+                backgroundcolor="#003459"
+                fontSize=".91rem"
+                disabled={isSubmitting}
+                className="fw-bold"
+              />
+            </div>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Kapat
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

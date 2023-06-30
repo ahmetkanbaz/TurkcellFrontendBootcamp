@@ -11,10 +11,9 @@ import { BsFacebook, BsTwitter, BsInstagram, BsYoutube } from "react-icons/bs";
 import RandomProducts from "./RandomProducts/RandomProducts";
 import DetailTable from "./DetailTable/DetailTable";
 import { fetchDetailProduct } from "../../utils/request";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UpdateProduct from "./UpdateProduct/UpdateProduct";
-import { useState } from "react";
 import {AiOutlineEdit} from 'react-icons/ai'
 const DetailProduct = () => {
   const { id } = useParams();
