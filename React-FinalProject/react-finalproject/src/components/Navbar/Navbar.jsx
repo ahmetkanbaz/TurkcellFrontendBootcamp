@@ -169,7 +169,7 @@ const Navbar = () => {
                     padding="0.275rem 1.75rem"
                     className="dropdown-toggle"
                     backgroundcolor="#FDFDFD"
-                    buttonText="Profile"
+                    buttonText={loginUser?.userName}
                     dataBsToggle="dropdown"
                   />
                   <ul className="dropdown-menu bg-transparent border-0">

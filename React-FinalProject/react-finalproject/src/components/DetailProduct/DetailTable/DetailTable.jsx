@@ -9,7 +9,7 @@ const DetailTable = ({detailProduct}) => {
         </tr>
         <tr>
           <td>Category</td>
-          <td>: {detailProduct.category}</td>
+          <td className='text-capitalize'>: {detailProduct.category}</td>
         </tr>
         <tr>
           <td>Rating</td>
