@@ -12,7 +12,7 @@ const CartCheckout = () => {
   };
 
   const subTotal = subTotalCart();
-  const shipping = subTotal < 300 ? 19.99 : 0;
+  const shipping = 19.99;
 
   const handleCheckout = () => {
     console.log("Checkout");
@@ -21,20 +21,19 @@ const CartCheckout = () => {
     <div className="border rounded-4 p-3">
       <h4 className="fw-bold">Cart Checkout</h4>
       <div>
-        <div className="d-flex flex-column gap-2 border-bottom border-top border-2 pt-3">
+        <div className="d-flex flex-column gap-2 border-bottom border-top border-2 py-3">
           <div className="d-flex justify-content-between">
             <span>Subtotal</span>
-            <span>{subTotal}</span>
+            <span>{subTotal.toFixed(2)} VND</span>
           </div>
           <div className="d-flex justify-content-between">
             <span>Shipping</span>
-            <span>{shipping}</span>
+            <span>{shipping} VND</span>
           </div>
-          <div className="fst-italic mt-4">300 VND üstü kargo ücretsizdir.</div>
         </div>
         <div className="d-flex justify-content-between pt-3">
           <span>Total</span>
-          <span>{subTotal + shipping}VND</span>
+          <span>{(subTotal + shipping).toFixed(2)} VND</span>
         </div>
         <div className="d-flex justify-content-center mt-4">
           <Button

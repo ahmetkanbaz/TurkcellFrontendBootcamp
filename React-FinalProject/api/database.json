@@ -291,7 +291,7 @@
           "title": "Deneme Ürünü Update",
           "category": "Jewelery",
           "image": "https://images.unsplash.com/photo-1523865236457-3ae3358a4eaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-          "price": "300",
+          "price": "100",
           "quantity": 2
         }
       ]
@@ -317,8 +317,24 @@
           "title": "Deneme Ürünü Update",
           "category": "Jewelery",
           "image": "https://images.unsplash.com/photo-1523865236457-3ae3358a4eaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-          "price": "300",
+          "price": "100",
           "quantity": 2
+        },
+        {
+          "id": 4,
+          "title": "Mens Casual Slim Fit",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+          "price": 15.99,
+          "quantity": 2
+        },
+        {
+          "id": 2,
+          "title": "Mens Casual Premium Slim Fit T-Shirts ",
+          "category": "men's clothing",
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "price": 22.3,
+          "quantity": 1
         }
       ]
     }

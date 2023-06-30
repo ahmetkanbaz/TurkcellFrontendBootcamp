@@ -33,6 +33,10 @@ const SingleCartProduct = ({ product }) => {
     }
     setIsUserProductCount(false);
   };
+
+  const handleDeleteProductFromCart = () => {
+    
+  }
   return (
     <div className="border-top border-2 py-3">
       <div className="row">
