@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts, fetchAllUsers } from "./utils/request";
 import { setFilteredProducts } from "./redux/slices/filterSlice/filterSlice";
 import { setUser } from "./redux/slices/usersSlice/userSlice";
+import { setCart } from "./redux/slices/cartSlice/cartSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,11 +22,13 @@ function App() {
     if (allUsers.length === 0) {
       dispatch(fetchAllUsers());
     }
-    //localde veri olup olmadığı
     const user = localStorage.getItem("isLogin");
-    user && dispatch(setUser(JSON.parse(user)));
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      dispatch(setUser(parsedUser));
+      dispatch(setCart(parsedUser.cart));
+    }
   }, [allProducts]);
-
   return (
     <>
       <GlobalStyle />

@@ -14,7 +14,7 @@ const DetailTable = ({detailProduct}) => {
         </tr>
         <tr>
           <td>Rating</td>
-          <td className='d-flex align-items-center gap-1'>:<Stars starCount = {detailProduct.rating?.rate} /></td>
+          <td className='d-flex align-items-center gap-1'>:<Stars fontSize = '1.1rem' starCount = {detailProduct.rating?.rate} /></td>
         </tr>
         <tr>
           <td>Count</td>

@@ -8,11 +8,13 @@ import Toast from "../../common/Toast/Toast";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoLogOutOutline } from "react-icons/io5";
 import { setUser } from "../../redux/slices/usersSlice/userSlice";
+import { clearCart } from "../../redux/slices/cartSlice/cartSlice";
 import { useState, useEffect } from "react";
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginUser = useSelector((state) => state.user.user);
+  const loginUserCart = useSelector((state) => state.cart.cart)
   const [navBackgroundColor, setNavBackgroundColor] = useState(false);
 
   const handleScroll = () => {
@@ -63,6 +65,9 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("isLogin");
     dispatch(setUser({}));
+    dispatch(clearCart());
+    document.getElementById('searchInput').value = ''
+    dispatch(setSearchQuery(''))
     Toast({
       message:
         "Başarılı bir şekilde çıkış yaptınız. Anasayfa'ya yönlendiriliyorsunuz.",
@@ -129,6 +134,7 @@ const Navbar = () => {
           <div className="row gap-3 gap-lg-0 w-100 align-items-center">
             <form role="search" className="col">
               <input
+              id="searchInput"
                 className="form-control rounded-pill shadow-none border-0"
                 type="search"
                 placeholder="Search something here!"
@@ -155,7 +161,7 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="d-flex gap-2 col">
-                <Button
+                {/* <Button
                   padding="0.275rem 1.75rem"
                   buttonText="Cart"
                   color="#FDFDFD"
@@ -163,6 +169,20 @@ const Navbar = () => {
                   iconPosition="right"
                   backgroundcolor="#003459"
                   onClick={() => navigate("/cart")}
+                /> */}
+                <Button
+                  color="#FDFDFD"
+                  icon={
+                    <div className="d-flex align-items-center">
+                      <AiOutlineShoppingCart size="1.2rem" />
+                      <span className="cartCount">
+                        {loginUserCart.length}
+                      </span>
+                    </div>
+                  }
+                  iconPosition="center"
+                  backgroundcolor="#003459"
+                  onClick={() => navigate(`/cart/${loginUser?.id}`)}
                 />
                 <div className="dropdown">
                   <Button

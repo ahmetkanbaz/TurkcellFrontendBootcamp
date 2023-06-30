@@ -10,6 +10,7 @@ import Button from "../../../common/Button/Button";
 import Toast from "../../../common/Toast/Toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../redux/slices/usersSlice/userSlice";
+import { setCart } from "../../../redux/slices/cartSlice/cartSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,23 +36,24 @@ const Login = () => {
           user.userPassword === values.loginPassword
       );
 
-      if(isEmailPasswordExist) {
+      if (isEmailPasswordExist) {
         Toast({
-          message: 'Giriş Başarılı.',
-          type: 'success'
-        })
-        dispatch(setUser(isEmailPasswordExist))
-        localStorage.setItem('isLogin', JSON.stringify(isEmailPasswordExist))
+          message: "Giriş Başarılı.",
+          type: "success",
+        });
+        dispatch(setUser(isEmailPasswordExist));
+        dispatch(setCart(isEmailPasswordExist.cart));
+        localStorage.setItem("isLogin", JSON.stringify(isEmailPasswordExist));
         setTimeout(() => {
-          navigate('/')
+          navigate("/");
         }, 2000);
-      }
-      else {
+      } else {
         Toast({
-          message: 'Girdiğiniz bilgiler hatalıdır. Lütfen girmiş olduğunuz bilgileri kontrol ediniz.',
-          type: 'error'
-        })
-        bag.setSubmitting(false)
+          message:
+            "Girdiğiniz bilgiler hatalıdır. Lütfen girmiş olduğunuz bilgileri kontrol ediniz.",
+          type: "error",
+        });
+        bag.setSubmitting(false);
       }
       bag.resetForm();
     },

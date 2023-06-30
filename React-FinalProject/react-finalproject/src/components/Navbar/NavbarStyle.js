@@ -29,4 +29,9 @@ export const Nav = styled.nav`
       );
     }
   }
+  .cartCount {
+    font-size: .8rem;
+    font-style: italic;
+    margin-top: .3rem;
+  }
 `;

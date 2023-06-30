@@ -11,14 +11,3 @@ export const postNewUser = async (newUser) => {
     return error.message
   }
 }
-
-export const updateProduct = async (productValues) => {
-  try {
-    const response = await axios.put(`${apiUrl}/products/${productValues.id}`, productValues)
-    return response.data
-  }
-
-  catch (error) {
-    return error.message
-  }
-}
