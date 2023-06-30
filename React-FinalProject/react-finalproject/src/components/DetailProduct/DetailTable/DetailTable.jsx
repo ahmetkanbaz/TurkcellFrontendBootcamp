@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import Stars from '../../../common/Stars/Stars';
 const DetailTable = ({detailProduct}) => {
   return (
     <table className="table">
@@ -13,7 +14,7 @@ const DetailTable = ({detailProduct}) => {
         </tr>
         <tr>
           <td>Rating</td>
-          <td>: {detailProduct.rating?.rate}</td>
+          <td className='d-flex align-items-center gap-1'>:<Stars starCount = {detailProduct.rating?.rate} /></td>
         </tr>
         <tr>
           <td>Count</td>
