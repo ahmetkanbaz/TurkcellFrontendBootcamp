@@ -1,7 +1,11 @@
 import Button from "../../../common/Button/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {clearAllCartProducts, updateProductQuantityInProducts} from '../../../utils/puts'
+import Toast from "../../../common/Toast/Toast";
 const CartCheckout = () => {
+  const dispatch = useDispatch();
   const loginUserCart = useSelector((state) => state.cart.cart);
+  const loginUser = useSelector((state) => state.user.user)
 
   const subTotalCart = () => {
     let subTotal = 0;
@@ -12,10 +16,17 @@ const CartCheckout = () => {
   };
 
   const subTotal = subTotalCart();
-  const shipping = 19.99;
+  const shipping = subTotal == 0 ? 0 : 19.99;
 
   const handleCheckout = () => {
-    console.log("Checkout");
+    loginUserCart.map((product) => {
+      dispatch(updateProductQuantityInProducts(product, product.quantity))
+    })
+    Toast({
+      message: 'Satın alma işlemi başarıyla gerçekleştirildi.',
+      type: 'success'
+    })
+    dispatch(clearAllCartProducts(loginUser))
   };
   return (
     <div className="border rounded-4 p-3">
@@ -42,6 +53,7 @@ const CartCheckout = () => {
             backgroundcolor="#003459"
             color="#FDFDFD"
             onClick={handleCheckout}
+            disabled={loginUserCart.length === 0}
           />
         </div>
       </div>

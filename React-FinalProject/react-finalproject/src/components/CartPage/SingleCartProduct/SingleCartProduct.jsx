@@ -3,10 +3,14 @@ import Button from "../../../common/Button/Button";
 import { useState } from "react";
 import Toast from "../../../common/Toast/Toast";
 import PropTypes from "prop-types";
+import {removeProductFromCart} from '../../../utils/puts'
+import {useDispatch, useSelector} from 'react-redux'
 const SingleCartProduct = ({ product }) => {
   const { title, category, image, price, quantity } = product;
   const [productCount, setProductCount] = useState(quantity);
   const [isUserProductCount, setIsUserProductCount] = useState(false);
+  const dispatch = useDispatch()
+  const loginUser = useSelector((state) => state.user.user)
 
   const increaseProductCount = () => {
     setProductCount(productCount + 1);
@@ -35,11 +39,15 @@ const SingleCartProduct = ({ product }) => {
   };
 
   const handleDeleteProductFromCart = () => {
-    
+    dispatch(removeProductFromCart(loginUser, product))
+    Toast({
+      message: 'Ürün sepetinizden çıkarıldı.',
+      type: 'success'
+    })
   }
   return (
     <div className="border-top border-2 py-3">
-      <div className="row">
+      <div className="row align-items-center">
         <div className="col-lg-4 col-12 mb-lg-0 mb-3">
           <div className="d-flex justify-content-center">
             <img
@@ -51,7 +59,7 @@ const SingleCartProduct = ({ product }) => {
         </div>
         <div className="col-lg-8 col-12">
           <div className="d-flex justify-content-end">
-            <AiFillDelete cursor="pointer" />
+            <AiFillDelete cursor="pointer" onClick={handleDeleteProductFromCart}/>
           </div>
           <h5 className="fw-bold">{title}</h5>
           <p className="text-capitalize">{category}</p>

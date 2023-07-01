@@ -17,6 +17,16 @@ const productsSlice = createSlice({
       state.loading = false;
       state.products = action.payload;
     },
+    setUpdateProduct: (state, action) => {
+      state.loading = false;
+      state.products = state.products.map((product) => {
+        if (product.id === action.payload.id) {
+          return action.payload;
+        }
+        return product;
+      }
+      );
+    },
     errorAllProducts: (state, action) => {
       state.loading = false;
       state.error = action.payload;
@@ -25,6 +35,6 @@ const productsSlice = createSlice({
   },
 });
 
-export const {loadingAllProducts, getAllProducts, errorAllProducts} = productsSlice.actions;
+export const {loadingAllProducts, setUpdateProduct, getAllProducts, errorAllProducts} = productsSlice.actions;
 
 export default productsSlice.reducer;

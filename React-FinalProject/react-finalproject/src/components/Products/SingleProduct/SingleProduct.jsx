@@ -42,11 +42,7 @@ const SingleProduct = ({ columnSize, singleProduct }) => {
         });
       } else {
         const data = {
-          id: singleProduct.id,
-          title: singleProduct.title,
-          category: singleProduct.category,
-          image: singleProduct.image,
-          price: singleProduct.price,
+          ...singleProduct,
           quantity: 1,
         };
 

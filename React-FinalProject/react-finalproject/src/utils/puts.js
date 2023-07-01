@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { addToCart, removeFromCart, clearCart, setCart, setCartError } from '../redux/slices/cartSlice/cartSlice';
+import {setUpdateProduct, errorAllProducts} from '../redux/slices/productsSlice/productsSlice'
 
 const apiUrl = 'http://localhost:3000';
 
@@ -62,4 +63,23 @@ export const updateCart = (userData, cart) => {
   axios.put(`${apiUrl}/users/${userData.id}`, updatedUserValues)
   localStorage.setItem('isLogin', JSON.stringify(updatedUserValues))
   return setCart(cart)
+}
+
+export const updateProductQuantityInProducts = (product, quantity) => async (dispatch) => {
+  console.log('first', product)
+  try {
+    const updatedProduct = {
+      ...product,
+      rating: {
+        ...product.rating,
+        count: Number(product.rating.count) - quantity
+      }
+    }
+    console.log('seco', updatedProduct)
+    const response = await axios.put(`${apiUrl}/products/${product.id}`, updatedProduct)
+    dispatch(setUpdateProduct(response.data))
+  }
+  catch (error) {
+    dispatch(errorAllProducts(error.message))
+  }
 }
