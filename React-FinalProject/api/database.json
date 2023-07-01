@@ -9,9 +9,9 @@
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       "rating": {
         "rate": 3.9,
-        "count": 119
+        "count": 115
       },
-      "quantity": 1
+      "quantity": 2
     },
     {
       "id": 2,
@@ -82,9 +82,9 @@
       "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
         "rate": 3,
-        "count": 395
+        "count": 394
       },
-      "quantity": 5
+      "quantity": 1
     },
     {
       "id": 8,
@@ -227,8 +227,9 @@
       "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
       "rating": {
         "rate": 4.5,
-        "count": 146
-      }
+        "count": 145
+      },
+      "quantity": 1
     },
     {
       "id": 20,
@@ -239,9 +240,9 @@
       "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
       "rating": {
         "rate": 3.6,
-        "count": 133
+        "count": 130
       },
-      "quantity": 12
+      "quantity": 3
     },
     {
       "id": 21,
@@ -250,11 +251,10 @@
       "image": "https://images.unsplash.com/photo-1523865236457-3ae3358a4eaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "price": "20",
       "rating": {
-        "count": 1,
+        "count": "3",
         "rate": "4.6"
       },
-      "category": "men's clothing",
-      "quantity": 1
+      "category": "men's clothing"
     }
   ],
   "users": [
@@ -265,34 +265,7 @@
       "userEmail": "ahmetkanbaz@gmail.com",
       "userPassword": "ahmetK3363.",
       "isAdmin": true,
-      "cart": [
-        {
-          "id": 21,
-          "title": "Deneme Ürünü",
-          "description": "Deneme Description1",
-          "image": "https://images.unsplash.com/photo-1523865236457-3ae3358a4eaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-          "price": "20",
-          "rating": {
-            "count": "4",
-            "rate": "4.6"
-          },
-          "category": "men's clothing",
-          "quantity": 4
-        },
-        {
-          "id": 7,
-          "title": "White Gold Plated Princess",
-          "price": 9.99,
-          "description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
-          "category": "jewelery",
-          "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
-          "rating": {
-            "rate": 3,
-            "count": 395
-          },
-          "quantity": 1
-        }
-      ]
+      "cart": []
     },
     {
       "id": 1688212789173,
@@ -301,21 +274,7 @@
       "userEmail": "ahmetkanbaz1@gmail.com",
       "userPassword": "ahmetK3363.",
       "isAdmin": false,
-      "cart": [
-        {
-          "id": 1,
-          "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-          "price": 109.95,
-          "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-          "category": "men's clothing",
-          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-          "rating": {
-            "rate": 3.9,
-            "count": 120
-          },
-          "quantity": 3
-        }
-      ]
+      "cart": []
     }
   ]
 }
