@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { loadingAllProducts, getAllProducts, errorAllProducts } from '../redux/slices/productsSlice/productsSlice'
 import { loadingDetailProduct, getDetailProduct, errorDetailProduct } from '../redux/slices/productDetailSlice/productDetailSlice';
-import { setAllUsers, setUser, setErrorUsers } from '../redux/slices/usersSlice/userSlice';
+import { setAllUsers, setErrorUsers } from '../redux/slices/usersSlice/userSlice';
 
 const apiUrl = 'http://localhost:3000';
 

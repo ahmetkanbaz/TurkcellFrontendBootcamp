@@ -9,8 +9,9 @@
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       "rating": {
         "rate": 3.9,
-        "count": 120
-      }
+        "count": 119
+      },
+      "quantity": 1
     },
     {
       "id": 2,
@@ -238,8 +239,9 @@
       "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
       "rating": {
         "rate": 3.6,
-        "count": 145
-      }
+        "count": 133
+      },
+      "quantity": 12
     },
     {
       "id": 21,
@@ -248,10 +250,11 @@
       "image": "https://images.unsplash.com/photo-1523865236457-3ae3358a4eaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "price": "20",
       "rating": {
-        "count": "2",
+        "count": 1,
         "rate": "4.6"
       },
-      "category": "men's clothing"
+      "category": "men's clothing",
+      "quantity": 1
     }
   ],
   "users": [
@@ -309,61 +312,6 @@
           "rating": {
             "rate": 3.9,
             "count": 120
-          },
-          "quantity": 3
-        }
-      ]
-    },
-    {
-      "id": 1688213158072,
-      "userName": "Kitap33",
-      "userSurname": "Ahmet KANBAZ",
-      "userEmail": "ahmetkanbaz111@gmail.com",
-      "userPassword": "ahmetK3363.",
-      "isAdmin": false,
-      "cart": []
-    },
-    {
-      "id": 1688213386586,
-      "userName": "Deneme123456",
-      "userSurname": "Ahmet Kanbaz",
-      "userEmail": "ahmetkanbazz@gmail.com",
-      "userPassword": "ahmetK3363.",
-      "isAdmin": false,
-      "cart": [
-        {
-          "id": 14,
-          "title": "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ",
-          "price": 999.99,
-          "description": "49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag",
-          "category": "electronics",
-          "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-          "rating": {
-            "rate": 2.2,
-            "count": 140
-          },
-          "quantity": 3
-        }
-      ]
-    },
-    {
-      "id": 1688213772554,
-      "userName": "Kitap33",
-      "userSurname": "Ahmet KANBAZ",
-      "userEmail": "ahmetkanbazzz33@gmail.com",
-      "userPassword": "ahmetK3363.",
-      "isAdmin": false,
-      "cart": [
-        {
-          "id": 20,
-          "title": "DANVOUY Womens T Shirt Casual Cotton Short",
-          "price": 12.99,
-          "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
-          "category": "women's clothing",
-          "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
-          "rating": {
-            "rate": 3.6,
-            "count": 145
           },
           "quantity": 3
         }

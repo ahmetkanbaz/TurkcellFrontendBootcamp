@@ -36,7 +36,6 @@ const SingleProduct = ({ columnSize, singleProduct }) => {
       });
     } else {
       handleProductAdd2Cart(singleProduct, loginUser, loginUserCart, dispatch)
-      console.log(localStorage.getItem("isLogin"))
     }
   };
   return (

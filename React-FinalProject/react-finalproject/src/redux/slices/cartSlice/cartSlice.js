@@ -23,10 +23,18 @@ const cartSlice = createSlice({
     },
     setCartError: (state, action) => {
       state.error = action.payload
+    },
+    setUpdateProductQuantityInCart: (state, action) => {
+      state.cart = state.cart.map((item) => {
+        if (item.id == action.payload.id) {
+          return action.payload
+        }
+        return item
+      })
     }
   }
 })
 
-export const { addToCart, removeFromCart, clearCart, setCart, setCartError} = cartSlice.actions
+export const { addToCart, removeFromCart, clearCart, setCart, setCartError, setUpdateProductQuantityInCart} = cartSlice.actions
 
 export default cartSlice.reducer
