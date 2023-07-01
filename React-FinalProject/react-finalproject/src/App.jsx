@@ -6,15 +6,21 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts, fetchAllUsers } from "./utils/request";
 import { setFilteredProducts } from "./redux/slices/filterSlice/filterSlice";
-import { setUser } from "./redux/slices/usersSlice/userSlice";
 import { setCart } from "./redux/slices/cartSlice/cartSlice";
+import { setUser } from "./redux/slices/usersSlice/userSlice";
+import {fetchLoginUser} from './utils/request'
 
 function App() {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.products.products);
   const allUsers = useSelector((state) => state.user.allUsers);
-  const cart = useSelector((state) => state.cart.cart);
-  const user = useSelector((state) => state.user.user);
+  
+  const getSingleUserFromLocaleStorage = async (id) => {
+    const response = await fetchLoginUser(id);
+    dispatch(setCart(response.cart));
+    localStorage.setItem("isLogin", JSON.stringify(response));
+  }
+
   useEffect(() => {
     if (allProducts.length === 0) {
       dispatch(fetchAllProducts());
@@ -27,11 +33,11 @@ function App() {
     if (user) {
       const parsedUser = JSON.parse(user);
       dispatch(setUser(parsedUser));
-      dispatch(setCart(parsedUser.cart));
+      getSingleUserFromLocaleStorage(parsedUser.id)
     }
+
   }, [allProducts]);
-  console.log(user)
-  console.log(cart)
+  
   return (
     <>
       <GlobalStyle />

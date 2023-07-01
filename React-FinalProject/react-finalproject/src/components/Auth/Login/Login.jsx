@@ -11,6 +11,7 @@ import Toast from "../../../common/Toast/Toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../redux/slices/usersSlice/userSlice";
 import { setCart } from "../../../redux/slices/cartSlice/cartSlice";
+import { fetchLoginUser } from "../../../utils/request";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,9 +43,11 @@ const Login = () => {
           type: "success",
         });
         dispatch(setUser(isEmailPasswordExist));
-        dispatch(setCart(isEmailPasswordExist.cart));
-        localStorage.setItem("isLogin", JSON.stringify(isEmailPasswordExist));
         navigate("/");
+        const response = await fetchLoginUser(isEmailPasswordExist.id);
+        dispatch(setCart(response.cart));
+        localStorage.setItem("isLogin", JSON.stringify(response));
+        
       } else {
         Toast({
           message:
