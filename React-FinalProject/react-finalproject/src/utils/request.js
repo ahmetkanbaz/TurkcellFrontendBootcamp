@@ -46,3 +46,13 @@ export const fetchLoginUser = async (id) => {
     return error.message
   }
 }
+
+export const getProductsStock = async (id) => {
+  try {
+    const response = await axios.get(`${apiUrl}/products/${id}`)
+    return response.data.rating.count
+  }
+  catch (error) {
+    return error.message
+  }
+}

@@ -2,6 +2,8 @@ import Button from "../../../common/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import {clearAllCartProducts, updateProductQuantityInProducts} from '../../../utils/puts'
 import Toast from "../../../common/Toast/Toast";
+import {getProductsStock} from '../../../utils/request'
+import {removeProductFromCart} from '../../../utils/puts'
 const CartCheckout = () => {
   const dispatch = useDispatch();
   const loginUserCart = useSelector((state) => state.cart.cart);
@@ -18,16 +20,42 @@ const CartCheckout = () => {
   const subTotal = subTotalCart();
   const shipping = subTotal == 0 ? 0 : 19.99;
 
-  const handleCheckout = () => {
-    loginUserCart.map((product) => {
-      dispatch(updateProductQuantityInProducts(product, product.quantity))
-    })
-    Toast({
-      message: 'Satın alma işlemi başarıyla gerçekleştirildi.',
-      type: 'success'
-    })
-    dispatch(clearAllCartProducts(loginUser))
+  const handleCheckout = async () => {
+    if (loginUserCart.length > 0) {
+      const productsInStock = [];
+  
+      for (const product of loginUserCart) {
+        const productStock = await getProductsStock(product.id);
+  
+        if (productStock < product.quantity) {
+          productsInStock.push(product);
+        }
+      }
+  
+      if (productsInStock.length == 0) {
+        Toast({
+          message: 'Satın alma işlemi başarıyla gerçekleştirildi.',
+          type: 'success'
+        });
+  
+        loginUserCart.map((product) => {
+          dispatch(updateProductQuantityInProducts(product, product.quantity));
+        });
+  
+        dispatch(clearAllCartProducts(loginUser));
+      }
+      else {
+        Toast({
+          message: `Bazı ürünlerin stoğu yetersizdir. Sepetten çıkarılıyor.`,
+          type: 'error'
+        })
+        productsInStock.map((product) => {
+          dispatch(removeProductFromCart(loginUser, product))
+        })
+      }
+    }
   };
+  
   return (
     <div className="border rounded-4 p-3">
       <h4 className="fw-bold">Cart Checkout</h4>

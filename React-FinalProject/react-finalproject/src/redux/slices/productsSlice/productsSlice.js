@@ -31,6 +31,15 @@ const productsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
       state.products = []
+    },
+    updateStockInCart: (state, action) => {
+      const {productId, newStock} = action.payload;
+      state.products = state.products.map((product) => {
+        if (product.id === productId) {
+          return {...product, stock: newStock};
+        }
+        return product;
+      });
     }
   },
 });

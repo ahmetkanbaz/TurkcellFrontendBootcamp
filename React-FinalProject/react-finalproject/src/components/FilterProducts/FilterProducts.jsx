@@ -9,6 +9,7 @@ import {
   setSortOption,
   setFilteredProducts,
 } from "../../redux/slices/filterSlice/filterSlice";
+import {fetchAllProducts} from '../../utils/request'
 
 const FilterProducts = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ const FilterProducts = () => {
       )
     );
   };
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, [])
 
   useEffect(() => {
     let tempFilteredProducts = [...allProducts];
