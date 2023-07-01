@@ -8,6 +8,7 @@ const CartPage = () => {
     <CartPageContainer>
       <div className="container py-5">
         <div className="row mt-5">
+          <h4 className="fw-bold mb-3">Cart</h4>
           <div className="col-lg-8 col-md-6 col-12">
             <CartProductsList />
           </div>

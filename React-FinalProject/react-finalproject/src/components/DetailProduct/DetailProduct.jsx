@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UpdateProduct from "./UpdateProduct/UpdateProduct";
 import {AiOutlineEdit} from 'react-icons/ai'
+import {handleProductAdd2Cart} from '../../helpers/addCartHelper'
 const DetailProduct = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const DetailProduct = () => {
   const loading = useSelector((state) => state.detailProduct.loading);
   const error = useSelector((state) => state.detailProduct.error);
   const loginUser = useSelector((state) => state.user.user);
+  const loginUserCart = useSelector((state) => state.cart.cart)
   useEffect(() => {
     dispatch(fetchDetailProduct(id));
   }, [id]);
@@ -43,6 +45,10 @@ const DetailProduct = () => {
     "https://picsum.photos/200/300",
     "https://picsum.photos/200/300",
   ];
+
+  const handleAdd2Cart = () => {
+    handleProductAdd2Cart(detailProduct, loginUser, loginUserCart, dispatch)
+  }
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Error...</h1>;
@@ -130,21 +136,32 @@ const DetailProduct = () => {
                 </div>
               </div>
               <DetailTable detailProduct={detailProduct} />
-              {loginUser.isAdmin == true && (
-                <div className="d-flex justify-content-lg-end justify-content-center">
-                  <Button
-                    onClick={handleShow}
-                    padding=".325rem 1rem"
-                    buttonText="Update Product"
-                    color = '#FDFDFD'
-                    backgroundcolor="#003459"
-                    fontSize='.9rem'
-                    icon={<AiOutlineEdit />}
-                    iconPosition="left"
-                    className="fw-bold"
-                  />
-                </div>
-              )}
+              <div className="d-flex justify-content-evenly">
+                <Button
+                  buttonText="Add to cart"
+                  padding=".325rem 1rem"
+                  color="#FDFDFD"
+                  backgroundcolor="#003459"
+                  fontSize=".9rem"
+                  className="fw-bold"
+                  onClick={handleAdd2Cart}
+                />
+                {loginUser.isAdmin == true && (
+                  <div className="d-flex justify-content-lg-end justify-content-center">
+                    <Button
+                      onClick={handleShow}
+                      padding=".325rem 1rem"
+                      buttonText="Update Product"
+                      color="#FDFDFD"
+                      backgroundcolor="#003459"
+                      fontSize=".9rem"
+                      icon={<AiOutlineEdit />}
+                      iconPosition="left"
+                      className="fw-bold"
+                    />
+                  </div>
+                )}
+              </div>
               {show == true && (
                 <UpdateProduct
                   detailProduct={detailProduct}

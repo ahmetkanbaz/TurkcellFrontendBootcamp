@@ -10,11 +10,11 @@ import Button from "../../../common/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { postNewUser } from "../../../utils/posts";
 import Toast from "../../../common/Toast/Toast";
-import { setUser } from "../../../redux/slices/usersSlice/userSlice";
+import { setUser, addNewUser } from "../../../redux/slices/usersSlice/userSlice";
 const Register = () => {
   const allUsers = useSelector((state) => state.user.allUsers);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     handleSubmit,
     handleChange,
@@ -40,11 +40,11 @@ const Register = () => {
         userEmail: values.registerEmail,
         userPassword: values.registerPassword,
         isAdmin: false,
-        cart: []
+        cart: [],
       };
       const isUserExist = allUsers.find(
         (user) => user.userEmail === newUser.userEmail
-        );
+      );
       if (isUserExist) {
         Toast({
           message:
@@ -62,10 +62,9 @@ const Register = () => {
           type: "success",
         });
         dispatch(setUser(newUser));
+        dispatch(addNewUser(newUser))
         localStorage.setItem("isLogin", JSON.stringify(newUser));
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        navigate("/");
       } else {
         Toast({
           message:

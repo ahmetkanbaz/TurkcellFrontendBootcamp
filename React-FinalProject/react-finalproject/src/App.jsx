@@ -13,7 +13,8 @@ function App() {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.products.products);
   const allUsers = useSelector((state) => state.user.allUsers);
-
+  const cart = useSelector((state) => state.cart.cart);
+  const user = useSelector((state) => state.user.user);
   useEffect(() => {
     if (allProducts.length === 0) {
       dispatch(fetchAllProducts());
@@ -29,6 +30,8 @@ function App() {
       dispatch(setCart(parsedUser.cart));
     }
   }, [allProducts]);
+  console.log(user)
+  console.log(cart)
   return (
     <>
       <GlobalStyle />

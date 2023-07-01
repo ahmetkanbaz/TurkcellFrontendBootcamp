@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "../../../common/Toast/Toast";
 import Stars from "../../../common/Stars/Stars";
-import { addNewProduct4Cart, updateCart } from "../../../utils/puts";
+import {handleProductAdd2Cart} from '../../../helpers/addCartHelper'
 
 const SingleProduct = ({ columnSize, singleProduct }) => {
   const navigate = useNavigate();
@@ -35,54 +35,7 @@ const SingleProduct = ({ columnSize, singleProduct }) => {
         type: "warning",
       });
     } else {
-      if (singleProduct.rating.count == 0) {
-        Toast({
-          message: "Ürün stokta bulunmamaktadır.",
-          type: "warning",
-        });
-      } else {
-        const data = {
-          ...singleProduct,
-          quantity: 1,
-        };
-
-        const isProductExistInCart = loginUserCart.find(
-          (product) => product.id == singleProduct.id
-        );
-
-        if (isProductExistInCart) {
-          if (isProductExistInCart.quantity < singleProduct.rating?.count) {
-          Toast({
-            message:
-              "Ürün zaten sepetinizde bulunmaktadır. Ürün adedi arttırıldı.",
-            type: "success",
-          });
-          const updatedCart = loginUserCart.map((product) => {
-            if(product.id == singleProduct.id) {
-              return {
-                ...product,
-                quantity: product.quantity + 1
-              }
-            }
-            return product;
-          })
-          dispatch(updateCart(loginUser, updatedCart))
-          }
-          else {
-            Toast({
-              message: 'Stokta yeterli ürün yok.',
-              type: 'warning'
-            })
-          }
-        }
-        else {
-          Toast({
-            message: "Ürün sepetinize eklendi.",
-            type: "success",
-          });
-          dispatch(addNewProduct4Cart(loginUser, data));
-        }
-      }
+      handleProductAdd2Cart(singleProduct, loginUser, loginUserCart, dispatch)
     }
   };
   return (

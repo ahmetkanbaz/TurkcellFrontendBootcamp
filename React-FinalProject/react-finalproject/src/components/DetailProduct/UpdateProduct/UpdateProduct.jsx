@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import updateProductSchema from "../../../schemas/updateProductSchema";
 import FormError from "../../../common/FormError/FormError";
 import Button from "../../../common/Button/Button";
-import {updateProduct} from '../../../utils/puts'
+import {updateProduct, updateSingleProductInAllProducts} from '../../../utils/puts'
 import { useDispatch } from "react-redux";
 import { fetchDetailProduct } from "../../../utils/request";
 
@@ -49,6 +49,7 @@ function UpdateProduct({ detailProduct, handleClose, show }) {
       };
       const response = await updateProduct(updatedProduct)
       detailProduct = response;
+      dispatch(updateSingleProductInAllProducts(updatedProduct))
       dispatch(fetchDetailProduct(response.id));
       handleClose()
       bag.resetForm();

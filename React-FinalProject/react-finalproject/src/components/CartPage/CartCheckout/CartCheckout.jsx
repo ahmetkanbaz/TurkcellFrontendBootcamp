@@ -6,6 +6,8 @@ const CartCheckout = () => {
   const dispatch = useDispatch();
   const loginUserCart = useSelector((state) => state.cart.cart);
   const loginUser = useSelector((state) => state.user.user)
+  const allProducts = useSelector((state) => state.products.products)
+  console.log(allProducts)
 
   const subTotalCart = () => {
     let subTotal = 0;

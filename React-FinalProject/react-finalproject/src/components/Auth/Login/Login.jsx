@@ -44,9 +44,7 @@ const Login = () => {
         dispatch(setUser(isEmailPasswordExist));
         dispatch(setCart(isEmailPasswordExist.cart));
         localStorage.setItem("isLogin", JSON.stringify(isEmailPasswordExist));
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        navigate("/");
       } else {
         Toast({
           message:
@@ -60,8 +58,8 @@ const Login = () => {
   });
 
   return (
-    <div className="container py-lg-5">
-      <div className="row justify-content-center align-items-center bg-body-tertiary p-5 rounded-3 gap-3">
+    <div className="container py-5">
+      <div className="row justify-content-center align-items-center bg-body-tertiary p-5 mt-5 rounded-3 gap-3">
         <div className="col-lg-6 col-md-6 col-12 d-flex justify-content-center mb-4 mb-lg-0">
           <img
             src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"

@@ -15,6 +15,16 @@ export const updateProduct = async (productValues) => {
   }
 }
 
+export const updateSingleProductInAllProducts = (product) => async (dispatch) => {
+  try {
+    const response = await axios.put(`${apiUrl}/products/${product.id}`, product)
+    dispatch(setUpdateProduct(response.data))
+  }
+  catch (error) {
+    dispatch(errorAllProducts(error.message))
+  }
+}
+
 export const addNewProduct4Cart = (userData, product) => async (dispatch) => {
   try {
     const updatedUserValues = {
@@ -66,7 +76,6 @@ export const updateCart = (userData, cart) => {
 }
 
 export const updateProductQuantityInProducts = (product, quantity) => async (dispatch) => {
-  console.log('first', product)
   try {
     const updatedProduct = {
       ...product,
@@ -75,7 +84,6 @@ export const updateProductQuantityInProducts = (product, quantity) => async (dis
         count: Number(product.rating.count) - quantity
       }
     }
-    console.log('seco', updatedProduct)
     const response = await axios.put(`${apiUrl}/products/${product.id}`, updatedProduct)
     dispatch(setUpdateProduct(response.data))
   }

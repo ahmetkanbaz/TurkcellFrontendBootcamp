@@ -16,12 +16,15 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    addNewUser: (state, action) => {
+      state.allUsers = [...state.allUsers, action.payload]
+    },
     setErrorUsers: (state, action) => {
       state.error = action.payload;
     }
   },
 });
 
-export const {setAllUsers, setUser, setErrorUsers} = userSlice.actions;
+export const {setAllUsers, setUser, addNewUser, setErrorUsers} = userSlice.actions;
 
 export default userSlice.reducer;
