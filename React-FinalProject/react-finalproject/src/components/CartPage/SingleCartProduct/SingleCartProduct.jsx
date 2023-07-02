@@ -118,14 +118,14 @@ const SingleCartProduct = ({ product }) => {
               </div>
             ) : (
               <div className="d-flex align-items-center">
-                <Button buttonText="-" onClick={decreaseProductCount} />
+                <Button buttonText="-" onClick={decreaseProductCount} className='px-2 bg-danger border-0' color='#FDFDFD' />
                 <div
                   className="text-center productCountStyle"
                   onClick={() => setIsUserProductCount(true)}
                 >
                   {productCount}
                 </div>
-                <Button buttonText="+" onClick={increaseProductCount} />
+                <Button buttonText="+" onClick={increaseProductCount} className='px-2' color='#FDFDFD' backgroundcolor='#003459'/>
               </div>
             )}
           </div>

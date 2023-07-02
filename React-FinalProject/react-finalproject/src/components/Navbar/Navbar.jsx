@@ -121,7 +121,7 @@ const Navbar = () => {
           className="collapse navbar-collapse ps-3"
           id="navbarSupportedContent"
         >
-          <ul className="navbar-nav mb-2 me-5 mb-lg-0 gap-lg-5 gap-md-3">
+          <ul className="navbar-nav mb-2 me-5 mb-lg-0 gap-lg-4 gap-md-3">
             <li className="nav-item">
               <Link to={"/"} className="nav-link">
                 Home
@@ -152,8 +152,8 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="row gap-3 w-100 gap-lg-0 justify-content-between align-items-center mb-2 mb-lg-0">
-            <div className="col-6">
-              <form role="search" className="d-none d-lg-block">
+            <div className="col-12 col-lg-6 d-none d-lg-block">
+              <form role="search">
                 <input
                   id="searchInput"
                   className="form-control rounded-pill shadow-none border-0 searchNavbar"
@@ -165,7 +165,7 @@ const Navbar = () => {
               </form>
             </div>
             {Object.keys(loginUser).length === 0 ? (
-              <div className="d-flex gap-2 col-6">
+              <div className="d-flex justify-content-evenly gap-2 col-12 col-lg-6">
                 <Button
                   padding="0.275rem 1.75rem"
                   buttonText="Login"
@@ -182,7 +182,7 @@ const Navbar = () => {
                 />
               </div>
             ) : (
-              <div className="d-flex justify-content-evenly col-6">
+              <div className="d-flex justify-content-evenly col-12 col-lg-6">
                 {/* <Button
                   padding="0.275rem 1.75rem"
                   buttonText="Cart"

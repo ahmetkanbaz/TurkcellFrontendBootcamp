@@ -23,9 +23,16 @@ const Router = () => {
         isLoginUser
           ? { path: "/detailproduct/:id", element: <DetailProductPage /> }
           : { path: "/detailproduct/:id", element: <Home /> },
+          isLoginUser
+          ? { path: "/detailproduct", element: <AllProducts /> }
+          : { path: "/detailproduct", element: <Home /> },
         isLoginUser
           ? { path: "/cart/:id", element: <Cart /> }
           : { path: "/cart/:id", element: <Home /> },
+          isLoginUser
+          ? { path: "/cart", element: <AllProducts /> }
+          : { path: "/cart", element: <Home /> },
+        {path: '/auth', element: <Home />},
         { path: "/auth/login", element: <Login /> },
         { path: "/auth/register", element: <Register /> },
       ],

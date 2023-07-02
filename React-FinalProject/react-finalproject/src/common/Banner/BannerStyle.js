@@ -23,11 +23,11 @@ export const BannerContainer = styled.div`
   }
   @media screen and (max-width: 1200px) {
     h1 {
-      font-size: 2.875rem;
-      line-height: 3.75rem;
+      font-size: 2rem;
+      line-height: 3.375rem;
     }
     h3 {
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       line-height: 2.375rem;
     }
     p {

@@ -105,7 +105,7 @@ const FilterProducts = () => {
       <div className="container py-4">
         <div className="row pb-5">
           <div className="col-md-3 sticky-lg-top">
-            <h4 className="pb-3 fw-bold">Filter</h4>
+            <h4 className="pb-lg-3 fw-bold">Filter</h4>
             <div className="border-bottom py-3 filterCategory">
               <h6 className="fw-bold">Category</h6>
               <div>
