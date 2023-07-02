@@ -151,12 +151,12 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <div className="row gap-3 gap-lg-0 justify-content-between align-items-center mb-2 mb-lg-0">
+          <div className="row gap-3 w-100 gap-lg-0 justify-content-between align-items-center mb-2 mb-lg-0">
             <div className="col-6">
               <form role="search" className="d-none d-lg-block">
                 <input
                   id="searchInput"
-                  className="form-control w-100 rounded-pill shadow-none border-0"
+                  className="form-control rounded-pill shadow-none border-0 searchNavbar"
                   type="search"
                   placeholder="Search something here!"
                   onChange={handleSearch}
@@ -182,7 +182,7 @@ const Navbar = () => {
                 />
               </div>
             ) : (
-              <div className="d-flex gap-2 col-6">
+              <div className="d-flex justify-content-evenly col-6">
                 {/* <Button
                   padding="0.275rem 1.75rem"
                   buttonText="Cart"

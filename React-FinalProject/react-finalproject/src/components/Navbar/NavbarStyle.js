@@ -27,6 +27,13 @@ export const Nav = styled.nav`
     line-height: 1.25rem;
   }
 
+  .searchNavbar {
+    width: 100%;
+    @media screen and (max-width: 1200px) {
+      width: 80%;
+    }
+  }
+
   @media screen and (max-width: 768px) {
     #navbarSupportedContent {
       background: linear-gradient(

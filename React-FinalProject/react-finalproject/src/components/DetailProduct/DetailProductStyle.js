@@ -18,6 +18,12 @@ export const DetailProductContainer = styled.div`
       span {
         font-size: 0.875rem;
       }
+      @media screen and (max-width: 768px) {
+        gap: 1rem;
+        span {
+          font-size: 0.75rem;
+        }
+      }
     }
     .table {
       td {

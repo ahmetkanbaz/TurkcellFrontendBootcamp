@@ -5,8 +5,6 @@ import { LiaCommentDotsSolid } from "react-icons/lia";
 import { DetailProductContainer } from "./DetailProductStyle";
 import { FiShare2 } from "react-icons/fi";
 import ProductSlider from "./ProductSlider/ProductSlider";
-import detailPageOne from "../../assets/detailPage/detailPageOne.svg";
-import detailPageTwo from "../../assets/detailPage/detailPageTwo.svg";
 import { BsFacebook, BsTwitter, BsInstagram, BsYoutube } from "react-icons/bs";
 import RandomProducts from "./RandomProducts/RandomProducts";
 import DetailTable from "./DetailTable/DetailTable";
@@ -17,6 +15,7 @@ import UpdateProduct from "./UpdateProduct/UpdateProduct";
 import { AiOutlineEdit } from "react-icons/ai";
 import { handleProductAdd2Cart } from "../../helpers/addCartHelper";
 import Toast from "../../common/Toast/Toast";
+import Quarantee from "./Quarantee/Quarantee";
 const DetailProduct = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -60,21 +59,10 @@ const DetailProduct = () => {
           <div className="row">
             <div className="col-lg-6 col-12">
               <ProductSlider images={productImages} />
-              <div className="my-3 d-flex flex-wrap justify-content-between quarantee">
-                <div>
-                  <img src={detailPageOne} alt="" />
-                  <span className="ps-2 fw-bold lh-sm">
-                    100% health guarantee for pets
-                  </span>
-                </div>
-                <div>
-                  <img src={detailPageTwo} alt="" />
-                  <span className="fw-bold ps-2 lh-sm">
-                    100% guarantee of pet identification
-                  </span>
-                </div>
+              <div className="d-none d-lg-block">
+                <Quarantee />
               </div>
-              <div className="d-flex align-items-center gap-4">
+              <div className="align-items-center gap-4 d-none d-lg-flex">
                 <div className="d-flex gap-1 align-items-center">
                   <FiShare2 size="1.25rem" cursor="pointer" />
                   <h6 className="fw-bold align-items-center pt-2">Share:</h6>
@@ -95,12 +83,15 @@ const DetailProduct = () => {
               >
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <Link to={"/"} className="text-decoration-none">
+                    <Link to={"/"} className="text-decoration-none text-black">
                       Home
                     </Link>
                   </li>
                   <li className="breadcrumb-item">
-                    <Link to={"/products"} className="text-decoration-none">
+                    <Link
+                      to={"/products"}
+                      className="text-decoration-none text-black"
+                    >
                       Products
                     </Link>
                   </li>
@@ -137,18 +128,30 @@ const DetailProduct = () => {
                 </div>
               </div>
               <DetailTable detailProduct={detailProduct} />
-              {detailProduct.rating?.count == 0 && loginUser.isAdmin != true && (
-                <div className="d-flex justify-content-center">
-                  <Button
-                    buttonText="Let me know when it arrives"
-                    padding=".33rem 1rem"
-                    color="#FDFDFD"
-                    className='bg-danger fw-bold'
-                    fontSize=".9rem"
-                    onClick={() => Toast({message: 'Ürün stoklara geldiğinde size haber vereceğiz.', type: 'success'})}
-                  />
-                </div>
-              )}
+              {detailProduct.rating?.count == 0 &&
+                loginUser.isAdmin != true &&
+                text -
+                  black(
+                    <div className="d-flex justify-content-center">
+                      <Button
+                        buttonText="Let me know when it arrives"
+                        padding=".33rem 1rem"
+                        color="#FDFDFD"
+                        className="bg-danger fw-bold"
+                        fontSize=".9rem"
+                        onClick={() =>
+                          Toast({
+                            message:
+                              "Ürün stoklara geldiğinde size haber vereceğiz.",
+                            type: "success",
+                          })
+                        }
+                      />
+                    </div>
+                  )}
+              <div className="d-flex d-lg-none">
+                <Quarantee />
+              </div>
               <div className="d-flex justify-content-evenly">
                 {detailProduct.rating?.count > 0 && (
                   <Button

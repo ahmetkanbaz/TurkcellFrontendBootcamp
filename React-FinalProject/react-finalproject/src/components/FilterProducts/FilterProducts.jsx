@@ -1,6 +1,4 @@
-import Button from "../../common/Button/Button";
 import SingleProduct from "../Products/SingleProduct/SingleProduct";
-import { AiOutlineDown } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { FilterProductsStyle } from "./FilterProductsStyle";
 import { useEffect } from "react";
@@ -9,7 +7,8 @@ import {
   setSortOption,
   setFilteredProducts,
 } from "../../redux/slices/filterSlice/filterSlice";
-import {fetchAllProducts} from '../../utils/request'
+import { fetchAllProducts } from "../../utils/request";
+import DropDownFilter from "./DropDownFilter/DropDownFilter";
 
 const FilterProducts = () => {
   const dispatch = useDispatch();
@@ -42,7 +41,7 @@ const FilterProducts = () => {
   };
   useEffect(() => {
     dispatch(fetchAllProducts());
-  }, [])
+  }, []);
 
   useEffect(() => {
     let tempFilteredProducts = [...allProducts];
@@ -150,90 +149,18 @@ const FilterProducts = () => {
                 <label htmlFor="womensClothingCheckbox">Women`s Clothing</label>
               </div>
             </div>
+            <div className="d-flex d-lg-none justify-content-center pt-3">
+              <DropDownFilter handleSort={handleSort} />
+            </div>
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9 mt-4 mt-lg-0">
             <div className="d-flex justify-content-between pb-3 align-items-center">
               <div className="d-flex gap-3 align-items-center">
                 <h4 className="fw-bold">Products</h4>
                 <span>{filteredProducts.length} puppies</span>
               </div>
-              <div className="dropdown">
-                <Button
-                  padding="0.25rem 0.625rem"
-                  className="dropdown-toggle"
-                  backgroundcolor="transparent"
-                  color="#667479"
-                  fontSize="0.875rem"
-                  icon={<AiOutlineDown size="1.1rem" />}
-                  buttonText="Sort by: Popular"
-                  iconPosition="right"
-                  dataBsToggle="dropdown"
-                />
-                <ul className="dropdown-menu">
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      type="button"
-                      onClick={() => handleSort("default")}
-                    >
-                      Default
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      type="button"
-                      onClick={() => handleSort("Title A-Z")}
-                    >
-                      Title A-Z
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      type="button"
-                      onClick={() => handleSort("Title Z-A")}
-                    >
-                      Title Z-A
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      type="button"
-                      onClick={() => handleSort("Category A-Z")}
-                    >
-                      Category A-Z
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      type="button"
-                      onClick={() => handleSort("Category Z-A")}
-                    >
-                      Category Z-A
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      type="button"
-                      onClick={() => handleSort("Price Rising")}
-                    >
-                      Price Rising
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      type="button"
-                      onClick={() => handleSort("Price Decreasing")}
-                    >
-                      Price Decreasing
-                    </button>
-                  </li>
-                </ul>
+              <div className="d-none d-lg-flex">
+                <DropDownFilter handleSort={handleSort} />
               </div>
             </div>
             <div className="row justify-content-center g-3">

@@ -7,4 +7,9 @@ export const CustomButton = styled.button`
   font-size: ${({ fontSize }) => fontSize};
   border-radius: 57px;
   border: 1.5px solid #003459;
+  @media screen and (max-width: 768px){
+    padding: .5rem 1rem;
+    font-size: .9rem;
+
+  }
 `;

@@ -59,7 +59,7 @@ export const FooterContainer = styled.footer`
       }
     }
     .footerBottom {
-      gap: 2.5rem;
+      gap: 1rem;
       span {
         color: #667479;
         font-size: 0.875rem;
