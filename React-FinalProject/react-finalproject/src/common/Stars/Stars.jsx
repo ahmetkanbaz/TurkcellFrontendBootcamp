@@ -24,7 +24,7 @@ const Stars = ({fontSize, starCount}) => {
     return tempStars
   }
   return (
-    <div className={`d-flex gap-1`}>{renderStars()}</div>
+    <div className={`d-flex`}>{renderStars()}</div>
   )
 }
 

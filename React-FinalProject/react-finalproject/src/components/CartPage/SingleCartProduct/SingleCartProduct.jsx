@@ -3,17 +3,37 @@ import Button from "../../../common/Button/Button";
 import { useState } from "react";
 import Toast from "../../../common/Toast/Toast";
 import PropTypes from "prop-types";
-import {removeProductFromCart} from '../../../utils/puts'
-import {useDispatch, useSelector} from 'react-redux'
+import { removeProductFromCart } from "../../../utils/puts";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCountInCart } from "../../../helpers/changeCountInCart";
+import { getProductsStock } from "../../../utils/request";
 const SingleCartProduct = ({ product }) => {
   const { title, category, image, price, quantity } = product;
   const [productCount, setProductCount] = useState(quantity);
   const [isUserProductCount, setIsUserProductCount] = useState(false);
-  const dispatch = useDispatch()
-  const loginUser = useSelector((state) => state.user.user)
+  const dispatch = useDispatch();
+  const loginUser = useSelector((state) => state.user.user);
+  const loginUserCart = useSelector((state) => state.cart.cart);
 
-  const increaseProductCount = () => {
-    setProductCount(productCount + 1);
+  const increaseProductCount = async () => {
+    const productStock = await getProductsStock(product.id);
+    if (productCount < productStock) {
+      setProductCount(productCount + 1);
+      const value = productCount + 1;
+      changeCountInCart(loginUserCart, product, loginUser, value, dispatch);
+      Toast({
+        message: "Ürün adedi arttırıldı.",
+        type: "success",
+      });
+    }
+    else {
+      setProductCount(productStock);
+      Toast({
+        message: 'Ürün adedi stok adetinden fazla olamaz.',
+        type: 'error'
+      })
+      changeCountInCart(loginUserCart, product, loginUser, productStock, dispatch);
+    }
   };
 
   const decreaseProductCount = () => {
@@ -25,6 +45,12 @@ const SingleCartProduct = ({ product }) => {
       return;
     }
     setProductCount(productCount - 1);
+    const value = productCount - 1;
+    changeCountInCart(loginUserCart, product, loginUser, value, dispatch);
+    Toast({
+      message: "Ürün adedi azaltıldı.",
+      type: "success",
+    });
   };
 
   const handleChangeProductCount = () => {
@@ -35,16 +61,23 @@ const SingleCartProduct = ({ product }) => {
       });
       setProductCount(1);
     }
+    changeCountInCart(
+      loginUserCart,
+      product,
+      loginUser,
+      productCount,
+      dispatch
+    );
     setIsUserProductCount(false);
   };
 
   const handleDeleteProductFromCart = () => {
-    dispatch(removeProductFromCart(loginUser, product))
+    dispatch(removeProductFromCart(loginUser, product));
     Toast({
-      message: 'Ürün sepetinizden çıkarıldı.',
-      type: 'success'
-    })
-  }
+      message: "Ürün sepetinizden çıkarıldı.",
+      type: "success",
+    });
+  };
   return (
     <div className="border-top border-2 py-3">
       <div className="row align-items-center">
@@ -59,7 +92,10 @@ const SingleCartProduct = ({ product }) => {
         </div>
         <div className="col-lg-8 col-12">
           <div className="d-flex justify-content-end">
-            <AiFillDelete cursor="pointer" onClick={handleDeleteProductFromCart}/>
+            <AiFillDelete
+              cursor="pointer"
+              onClick={handleDeleteProductFromCart}
+            />
           </div>
           <h5 className="fw-bold">{title}</h5>
           <p className="text-capitalize">{category}</p>

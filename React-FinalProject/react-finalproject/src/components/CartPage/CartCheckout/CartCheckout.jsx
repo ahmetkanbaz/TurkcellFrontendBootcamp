@@ -46,7 +46,7 @@ const CartCheckout = () => {
       }
       else {
         Toast({
-          message: `Bazı ürünlerin stoğu yetersizdir. Sepetten çıkarılıyor.`,
+          message: `Bazı ürünlerin stoğu yetersizdir. Stoğu yetersiz ürünler sepetten çıkarılıyor.`,
           type: 'error'
         })
         productsInStock.map((product) => {

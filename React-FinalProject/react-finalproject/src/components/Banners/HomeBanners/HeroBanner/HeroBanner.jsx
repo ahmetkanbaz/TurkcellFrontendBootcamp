@@ -1,4 +1,4 @@
-import { HeroBannerDiv } from "./HeroBannerStyle";
+import { HeroBannerDiv, Layout1, Layout2, Layout5, Layout6, Layout7, Layout8 } from "./HeroBannerStyle";
 import homeBanner from "../../../../assets/banner/homeBanner.svg";
 import Banner from "../../../../common/Banner/Banner";
 const HeroBanner = () => {
@@ -9,16 +9,24 @@ const HeroBanner = () => {
 
   return (
     <HeroBannerDiv className="position-relative pt-5">
-      {/* <div className="position-absolute layout1"></div> */}
+      <Layout1 className="position-absolute"></Layout1>
+      <Layout2 className="position-absolute"></Layout2>
+      <div className="position-absolute layout3 d-none d-lg-flex"></div>
+      <div className="position-absolute layout4 d-none d-lg-flex"></div>
+      <Layout5 className="position-absolute"></Layout5>
+      <Layout6 className="position-absolute"></Layout6>
+      <Layout7 className="position-absolute"></Layout7>
+      <Layout8 className="position-absolute"></Layout8>
       <Banner
         title={title}
-        sizetitle='3.75rem'
-        color='#002A48'
+        sizetitle="3.75rem"
+        color="#002A48"
         subTitle={subTitle}
         subTitleSize="2.875rem"
         description={description}
         image={homeBanner}
         reverse="null"
+        classname="pt-5 pt-lg-0"
       />
     </HeroBannerDiv>
   );

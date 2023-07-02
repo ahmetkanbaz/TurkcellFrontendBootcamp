@@ -10,12 +10,14 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { setUser } from "../../redux/slices/usersSlice/userSlice";
 import { clearCart } from "../../redux/slices/cartSlice/cartSlice";
 import { useState, useEffect } from "react";
+import { BsSearch } from "react-icons/bs";
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginUser = useSelector((state) => state.user.user);
-  const loginUserCart = useSelector((state) => state.cart.cart)
+  const loginUserCart = useSelector((state) => state.cart.cart);
   const [navBackgroundColor, setNavBackgroundColor] = useState(false);
+  const [displayInput, setDisplayInput] = useState(false);
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -66,8 +68,8 @@ const Navbar = () => {
     localStorage.removeItem("isLogin");
     dispatch(setUser({}));
     dispatch(clearCart());
-    document.getElementById('searchInput').value = ''
-    dispatch(setSearchQuery(''))
+    document.getElementById("searchInput").value = "";
+    dispatch(setSearchQuery(""));
     Toast({
       message:
         "Başarılı bir şekilde çıkış yaptınız. Anasayfa'ya yönlendiriliyorsunuz.",
@@ -96,7 +98,25 @@ const Navbar = () => {
         <Link to={"/"} className="navbar-brand">
           <img src={logoMonito} alt="" />
         </Link>
-        <h2 className="d-flex d-lg-none">Search Button</h2>
+        <div className="d-lg-none d-block">
+          <div className="position-relative">
+            <BsSearch
+              size="1.2rem"
+              onClick={() => setDisplayInput(!displayInput)}
+            />
+            {displayInput && (
+              <div className="position-absolute end-0 displayInput d-block">
+                <input
+                  className="form-control w-100 rounded-pill shadow-none border-0"
+                  type="search"
+                  placeholder="Search something here!"
+                  onChange={handleSearch}
+                  onKeyDown={handleEnter}
+                />
+              </div>
+            )}
+          </div>
+        </div>
         <div
           className="collapse navbar-collapse ps-3"
           id="navbarSupportedContent"
@@ -131,19 +151,21 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <div className="row gap-3 gap-lg-0 w-100 align-items-center">
-            <form role="search" className="col">
-              <input
-              id="searchInput"
-                className="form-control rounded-pill shadow-none border-0"
-                type="search"
-                placeholder="Search something here!"
-                onChange={handleSearch}
-                onKeyDown={handleEnter}
-              />
-            </form>
+          <div className="row gap-3 gap-lg-0 justify-content-between align-items-center mb-2 mb-lg-0">
+            <div className="col-6">
+              <form role="search" className="d-none d-lg-block">
+                <input
+                  id="searchInput"
+                  className="form-control w-100 rounded-pill shadow-none border-0"
+                  type="search"
+                  placeholder="Search something here!"
+                  onChange={handleSearch}
+                  onKeyDown={handleEnter}
+                />
+              </form>
+            </div>
             {Object.keys(loginUser).length === 0 ? (
-              <div className="d-flex gap-2 col">
+              <div className="d-flex gap-2 col-6">
                 <Button
                   padding="0.275rem 1.75rem"
                   buttonText="Login"
@@ -160,7 +182,7 @@ const Navbar = () => {
                 />
               </div>
             ) : (
-              <div className="d-flex gap-2 col">
+              <div className="d-flex gap-2 col-6">
                 {/* <Button
                   padding="0.275rem 1.75rem"
                   buttonText="Cart"
@@ -175,9 +197,7 @@ const Navbar = () => {
                   icon={
                     <div className="d-flex align-items-center">
                       <AiOutlineShoppingCart size="1.2rem" />
-                      <span className="cartCount">
-                        {loginUserCart.length}
-                      </span>
+                      <span className="cartCount">{loginUserCart.length}</span>
                     </div>
                   }
                   iconPosition="center"
