@@ -1,0 +1,20 @@
+.navbar {
+  transition: background-color 0.5s ease-in-out;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.navbar.scrolled {
+  background-color: #F0F0F0;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.banner {
+  height: 2000px;
+  background-color: #F0F0F0;
+}
